@@ -2,16 +2,17 @@
 
 /* Container for the intro section */
 .intro {
-    background-color: #F0F5FB; /* Light background color */
-    
+    /* background-color: #F0F5FB;  */
+    background: linear-gradient(to bottom, #F0F5FB, #FFFFFF);
     display: flex; /* Flexbox layout */
     flex-direction: row; /* Horizontal layout */
-    padding: 0 60px; /* Padding on the sides */
+    padding: 0 40px; /* Padding on the sides */
+    padding-bottom: 2rem;
 }
 
 /* Container for the intro text */
 .intro-text {
-    flex: 1; /* Flex-grow to occupy available space */
+    flex: 1.2; /* Flex-grow to occupy available space */
     display: flex; /* Flexbox layout */
     justify-content: center; /* Center horizontally */
     flex-direction: column; /* Vertical layout */
@@ -62,7 +63,8 @@
 
 .intro-img img{
     z-index: 999;
-    height: 90%;
+    height: 100%;
+    width: 80%;
 }
 
 /* Responsive design for smaller screens */
@@ -126,7 +128,7 @@
     height: 100%; /* Ensure it covers the entire area of the main image */
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two columns */
-    column-gap: 2rem; /* Gap between the columns */
+    column-gap: 2.2rem; /* Gap between the columns */
     justify-content: space-between; /* Space out the items */
     align-items: center; /* Center items vertically */
     padding: 1rem; /* Optional padding */
@@ -157,7 +159,7 @@
 
 .img-body.statistic {
     grid-column: 1; /* Position the statistics image in the first column */
-    margin-top: 0; /* Adjust as necessary */
+    margin-top: -3rem; /* Adjust as necessary */
 }
 
 @media (max-width: 800px) {

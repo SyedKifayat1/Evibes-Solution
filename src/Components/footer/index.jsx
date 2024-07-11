@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="footer-section">
           <h1 className="footer-heading">Follow Us</h1>
           <div className="social-icons">
-            {/* Add your social media icons here */}
+            
             <i className="fab fa-facebook-f"></i>
             <i className="fab fa-twitter"></i>
             <i className="fab fa-instagram"></i>

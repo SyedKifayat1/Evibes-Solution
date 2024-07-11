@@ -1,9 +1,12 @@
 import React from 'react'
 import './home.css'
+import HomeIntro from './home-intro'
 const Home = () => {
   return (
-    <section className='home'>index</section>
-    // <></>
+    <div className=''>
+      <HomeIntro/>
+    </div>
+
   )
 }
 

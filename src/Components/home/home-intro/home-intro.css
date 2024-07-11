@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+/* Container for the intro section */
+.intro {
+    background-color: #F0F5FB; /* Light background color */
+    
+    display: flex; /* Flexbox layout */
+    flex-direction: row; /* Horizontal layout */
+    padding: 0 60px; /* Padding on the sides */
+}
+
+/* Container for the intro text */
+.intro-text {
+    flex: 1; /* Flex-grow to occupy available space */
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Center horizontally */
+    flex-direction: column; /* Vertical layout */
+    padding: 20px; /* Padding for spacing */
+}
+
+/* Styling for the main heading */
+.heading {
+    font-size: 62px; /* Large font size */
+    color: #002159; /* Dark blue color */
+    font-family: "Space Grotesk", sans-serif; /* Custom font */
+    font-weight: 600; /* Semi-bold */
+    margin: 0; /* Remove default margin */
+    
+}
+
+
+/* Styling for the sub-heading */
+.sub-heading {
+    font-family: "Space Grotesk", sans-serif; /* Custom font */
+    font-size: 16px; /* Medium font size */
+    margin-top: 10px; /* Space above the sub-heading */
+    margin-bottom: 0; /* Remove default margin */
+}
+
+.intro-btn button{
+   width: 16rem;
+   padding: 15px;
+   border-radius: 10px;
+   border: none;
+   background-color: #4787FA;
+   font-family: "Space Grotesk", sans-serif;
+   font-size: 16px;
+   color: #fff;
+}
+.intro-btn button:hover{
+    background-color: #002159;
+}
+
+/* Container for the intro image */
+.intro-img {
+    flex: 1; /* Flex-grow to occupy available space */
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Padding for spacing */
+}
+
+.intro-img img{
+    z-index: 2000;
+    height: 90%;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 992px) {
+    .intro {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 20px; /* Adjust padding for smaller screens */
+        width: 100%;
+        padding:20px 0 0 0; /* Padding on the sides */
+    }
+    .intro-text{
+        margin-top: 50px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .intro-text, .intro-img {
+        width: 100%; /* Full width for each section */
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+}
+
+
+@media (max-width:556px){
+    .heading{
+        font-size: 50px;
+    }
+    
+}
+@media (max-width:1250px){
+   
+    .intro-img img{
+        height: 90%;
+        width: 80%;
+    }
+}
+
+@media (max-width:430px){
+    .heading{
+        font-size: 40px;
+    }
+}

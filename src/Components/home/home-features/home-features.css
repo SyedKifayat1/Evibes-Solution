@@ -1,0 +1,126 @@
+/* Ensure you import the required font if you are using custom fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@media (min-width:996px) {
+    .home-features {
+        padding: 4rem !important;
+    }
+    .home-features h1 {
+        
+        margin-bottom: 6rem !important;
+        
+      }
+      .features-card {
+        margin: 0 !important;
+      }
+
+}
+.home-features {
+  
+  font-family: "Space Grotesk", sans-serif; /* Custom font */
+  text-align: center;
+  margin-bottom: 4rem;
+  
+}
+
+.home-features h1 {
+  font-size: 48px;
+  margin-bottom: 4rem;
+  color: #002057;
+  font-weight: 700;
+  word-spacing: 1px;
+}
+
+.features-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+
+}
+
+.features-card {
+  background: #fff;
+  margin:.5rem 2rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex: 1;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 320px;
+  min-height: 300px;
+  max-width: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.features-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.features-card .card-icon {
+  font-size: 2rem;
+  color: #007bff; /* Icon color */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.features-card .card-icon img {
+  max-width: 10rem;
+  height: 2rem;
+}
+
+.features-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.features-card p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .home-features h1 {
+    font-size: 40px;
+  }
+
+  .features-cards {
+    gap: 1rem;
+  }
+
+  .features-card {
+    padding: 1rem;
+  }
+
+  .features-card h2 {
+    font-size: 1.25rem;
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .home-features h1 {
+    font-size: 32px;
+  }
+
+  .features-card {
+    padding: 0.75rem;
+    
+  }
+
+  .features-card h2 {
+    font-size: 1.125rem;
+  }
+
+  
+}

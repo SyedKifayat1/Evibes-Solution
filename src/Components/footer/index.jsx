@@ -33,10 +33,10 @@ const Footer = () => {
           <h1 className="footer-heading">Follow Us</h1>
           <div className="social-icons">
             
-            <i className="fab fa-facebook-f"></i>
-            <i className="fab fa-twitter"></i>
-            <i className="fab fa-instagram"></i>
-            <i className="fab fa-linkedin-in"></i>
+           <div className='icon-box'> <i className="fab fa-facebook-f"></i></div>
+           <div className='icon-box'> <i className="fab fa-twitter"></i></div>
+           <div className='icon-box'> <i className="fab fa-instagram"></i></div>
+           <div className='icon-box'>  <i className="fab fa-linkedin-in"></i></div>
           </div>
         </div>
       </div>

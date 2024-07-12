@@ -52,14 +52,27 @@
   .social-icons i {
     font-size: 24px;
     
-    color: #002159;
     cursor: pointer;
   }
-  
-  .social-icons i:hover {
+  .icon-box{
+    border: 1px solid gray;
+    padding: 10px;
+    height: 36px;
+    width: 36px;
+    border-radius: 5px;
     color: #002159;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .icon-box:hover{
+    background-color: #5993FA;
+    color: #fff;
+    border: none;
   }
   
+
+   
   @media (max-width: 768px) {
     .footer-container {
       flex-direction: column;

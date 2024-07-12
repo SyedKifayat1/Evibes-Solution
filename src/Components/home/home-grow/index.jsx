@@ -1,0 +1,65 @@
+import React from 'react';
+import './home-grow.css';
+
+const HomeGrow = () => {
+    return (
+        <section className='home-grow'>
+            <div className='grow-intro'>
+                <div>
+                    <h1>We help you grow your business</h1>
+                    <p>Your presence on digital platforms to get more traffic, leads and sales for your company with our customised digital marketing solution.</p>
+                    <div className='features'>
+                        <div className='feature'>
+                            <span className='icon'><i className="fas fa-check"></i></span>
+                            <h3>We Build Innovative Websites</h3>
+                        </div>
+                        <div className='feature'>
+                            <span className='icon'><i className="fas fa-check"></i></span>
+                            <h3>Effective Digital Marketing</h3>
+                        </div>
+                        <div className='feature'>
+                            <span className='icon'><i className="fas fa-check"></i></span>
+                            <h3>We Drive Buying Decisions</h3>
+                        </div>
+                        <div className='feature'>
+                            <span className='icon'><i className="fas fa-check"></i></span>
+                            <h3>Fulfill Your Business Objectives</h3>
+                        </div>
+                    </div>
+                    <button className='get-started-btn'>Get Started</button>
+                </div>
+            </div>
+            <div className='cards'>
+                <div className='card'>
+                    <div className='card-icon'></div>
+                    <h1>Web Design</h1>
+                    <p>Website is the digital face of your company. Let’s make it look awesome!</p>
+                    <button className='learn-more-btn'>LEARN MORE</button>
+                </div>
+                <div className='card'>
+                    <div className='card-icon'></div>
+                    <h1>Web Development</h1>
+                    <p>Seamless technology to help you build your website with.</p>
+                    <button className='learn-more-btn'>LEARN MORE</button>
+                </div>
+                <div className='card'>
+                    <div className='card-icon'></div>
+                    <h1>Digital Marketing</h1>
+                    <p>The effective digital marketing strategies that tap emotions and drive buying decisions.</p>
+                    <button className='learn-more-btn'>LEARN MORE</button>
+                </div>
+                <div className='card'>
+                    <div className='card-icon'></div>
+                    <h1>Brand Growth</h1>
+                    <p>Let’s craft strategy that deeply resonates with your audience and boost you KPIs.</p>
+                    <button className='learn-more-btn'>LEARN MORE</button>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default HomeGrow;
+
+
+

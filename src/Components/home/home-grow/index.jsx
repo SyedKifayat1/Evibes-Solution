@@ -33,14 +33,14 @@ const HomeGrow = () => {
                 <div className='card'>
                     <div className='card-icon'><i aria-hidden="true" class="fas fa-2x fa-tablet-alt"></i></div>
                     <h1>Web Design</h1>
-                    <p>Website is the digital face of your company. Let’s make it look awesome!</p>
+                    <p>Website is the digital face of your company. Let’s make it look awesome and user friendly</p>
                     <button className='learn-more-btn'>LEARN MORE</button>
                 </div>
                 <div className='card'>
                     <div className='card-icon'><i class="fa-solid fa-2x fa-code"></i>
                     </div>
                     <h1>Web Development</h1>
-                    <p>Seamless technology to help you build your website with.</p>
+                    <p>Seamless technology to help you build your website with responsiveness and user friendly design.</p>
                     <button className='learn-more-btn'>LEARN MORE</button>
                 </div>
                 <div className='card'>

@@ -107,17 +107,18 @@
 
 
 
-.card-icon {
-    width: 50px;
-    height: 50px;
-    background-color: #007bff;
-    margin: 0 auto 1rem 0;
-    border-radius: 50%;
+.card-icon i{
+    color: #4B58DB;
+    transition: all ease .5s;
+}
+.card-icon i:hover {
+    color: #002159;
 }
 
 .card h1 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    color: #002159;
 }
 
 .card p {

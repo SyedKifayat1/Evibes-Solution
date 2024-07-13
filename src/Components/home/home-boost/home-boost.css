@@ -43,13 +43,17 @@
   }
   
   .home-boost-text button {
-    padding: 1.25rem 1.25rem;
+    padding: 1.25rem 1.5rem;
     font-size: 1rem;
+    font-weight: 500;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+  }
+  .home-boost-text button:hover{
+    background-color: #002159;
   }
   
   .home-boost-images {

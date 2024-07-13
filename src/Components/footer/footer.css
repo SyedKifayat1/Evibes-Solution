@@ -2,6 +2,8 @@
     background-color: #fff;
     color: #002159;
     padding: 40px 20px;
+    margin-top: 4rem;
+
   }
   
   .footer-container {
@@ -10,6 +12,7 @@
     justify-content: space-around;
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: 4rem;
   }
   
   .footer-logo img {

@@ -5,6 +5,7 @@ import HomeGrow from './home-grow'
 import HomeFeatures from './home-features'
 import HomeBoost from './home-boost'
 import HomeEmpower from './home-empower'
+import HomeTestimonials from './home-testimonial'
 const Home = () => {
   return (
     <div className=''>
@@ -13,6 +14,7 @@ const Home = () => {
       <HomeFeatures />
       <HomeBoost />
       <HomeEmpower/>
+      <HomeTestimonials/>
     </div>
 
   )

@@ -1,0 +1,77 @@
+@media (min-width: 996px) {
+    .home-card {
+        margin: 6rem !important;
+    
+
+    }
+
+
+}
+
+
+  .home-card {
+    background-color: #4B58DB;
+    font-family: "Space Grotesk", sans-serif;
+
+    flex: 1;
+    margin: .5rem;
+    color: #ffffff;
+    text-align: center;
+    padding: 4rem;
+    border-radius: 20px;
+    position: relative; /* Ensure relative positioning for child elements */
+}
+
+
+
+  
+  .home-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .book-button {
+    margin-top: 1rem;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #002159;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .book-button:hover {
+    background-color: #002159;
+    color: #fff;
+  }
+  
+
+  .home-card-content h3 {
+    font-size: 36px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #ffff;
+    margin-bottom: 2rem;
+}
+
+
+@media (max-width: 768px) {
+    .home-card-content h3 {
+        font-size: 26px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .home-card-content h3 {
+        font-size: 20px;
+    }
+    .home-card{
+        padding: 2rem;
+    }
+}
+

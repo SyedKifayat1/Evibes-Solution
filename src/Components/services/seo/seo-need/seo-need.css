@@ -1,0 +1,67 @@
+@media (min-width:996px) {
+    .seo-need {
+        padding: 6rem !important;
+    }
+}
+
+.seo-need {
+    max-width: 100%;
+    margin: 4rem auto;
+    padding: 1rem;
+    text-align: center;
+    color: #002159;
+    min-height: 500px;
+}
+
+
+.seo-need h1 {
+    font-size: 48px;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+
+
+.seo-need p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.seo-need-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4B58DB;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.seo-need-button:hover {
+    background-color: #002159;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+
+    .seo-need h1 {
+        font-size: 40px;
+    }
+    .seo-need-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .seo-need h1 {
+        font-size: 32px;
+    }
+
+    .seo-need {
+        padding: 1.5rem;
+        text-align: left;
+    }
+}

@@ -1,9 +1,9 @@
 .seo-process {
-    width: 100%;
+    max-width: 100%;
     min-height: 700px;
     padding: 10px 20px;
     background-color: #DADADB;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -11,7 +11,8 @@
     align-items: center;
     font-family: "Space Grotesk", sans-serif;
     color: #002159;
-
+    margin: 0 1rem;
+    
 }
 
 .seo-process h1 {

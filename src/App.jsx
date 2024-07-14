@@ -22,7 +22,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/home/index';
 import Footer from './Components/footer';
 import SEOService from './Components/services/seo';
-const NotFound = () => <h1>404 - Not Found</h1>;
+const NotFound = () => <h1 style={{textAlign:"center", padding:"4rem", color:"red"}}>404 - Not Found</h1>;
 function App() {
   return (
     <Router>

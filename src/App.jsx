@@ -1,15 +1,42 @@
-import Navbar from './Components/Navbar/Navbar'
+// import Navbar from './Components/Navbar/Navbar'
+// import Home from './Components/home/index';
+// import Footer from './Components/footer';
+// import SEOService from './Components/services/seo';
+// function App() {
+  
+//   return (
+//     <>
+//      <Navbar/>
+//      <Home/>
+//      <SEOService />
+//      <Footer/>
+//     </>
+//   )
+// }
+
+// export default App;
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './app.css'
+import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/home/index';
 import Footer from './Components/footer';
+import SEOService from './Components/services/seo';
+const NotFound = () => <h1>404 - Not Found</h1>;
 function App() {
-  
   return (
-    <>
-     <Navbar/>
-     <Home/>
-     <Footer/>
-    </>
-  )
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/seo-service" element={<SEOService />} />
+        {/* Add more routes as needed */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
 }
 
-export default App
+export default App;
+

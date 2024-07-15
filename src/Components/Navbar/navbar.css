@@ -7,7 +7,7 @@
 
 .navbar {
 
-  background-color: transparent;
+  background-color: #ffff;
   color: white;
   padding: 1rem 0;
   position: fixed;
@@ -15,11 +15,12 @@
   top: 0;
   z-index: 4000;
   transition: top 0.3s;
+  position: sticky;
 }
 
-.hidden {
+/* .hidden {
   top: -100px;
-}
+} */
 
 .navbar-nav {
   display: flex;

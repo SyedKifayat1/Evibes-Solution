@@ -1,0 +1,91 @@
+@media (min-width:1200px) {
+    .marketing-details {
+        padding: 8rem !important;
+    }
+
+}
+
+
+
+.marketing-details {
+    min-height: 500px;
+    padding: 2rem;
+    font-family: "Space Grotesk", sans-serif;
+    color: #002159;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+
+.content {
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+
+.content h1 {
+    font-size: 48px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #002159;
+
+}
+
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 40px;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+    .content h1 {
+        font-size: 32px;
+    }
+
+}
+
+.content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.content button {
+    padding: 0.5rem 1rem;
+    background-color: #002159;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.content button:hover {
+    background-color: #001740;
+}
+
+.details ul {
+    padding: 0 0 0 1rem;
+}
+
+.details li {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    max-width: 800px;
+}
+
+
+
+@media (max-width:996px) {
+    .marketing-details {
+        flex-direction: column;
+        align-items: start;
+        justify-content: left;
+    }
+
+}

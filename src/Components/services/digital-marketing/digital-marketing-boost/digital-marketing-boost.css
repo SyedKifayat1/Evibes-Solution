@@ -1,10 +1,10 @@
 /* Basic styling */
 @media (min-width:996px) {
-    .web-boost {
+    .digital-marketing-boost {
         padding:1rem 6rem !important;
     }
 }
-.web-boost {
+.digital-marketing-boost {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -16,13 +16,13 @@
   }
   
 
-  .web-content {
+  .digital-marketing-content {
     flex: 1;
     padding: .5rem;
     margin-top: 2rem;
   }
   
-  .web-content h4 {
+  .digital-marketing-content h4 {
     font-size: 1rem;
     margin-bottom: 0.5rem;
     margin-top: 1rem;
@@ -30,48 +30,48 @@
   }
   
 
-  .web-content h1 {
+  .digital-marketing-content h1 {
     font-size: 48px;
     margin-bottom: 16px;
     font-weight: 700;
   }
   @media (max-width: 768px) {
-    .web-content h1 {
+    .digital-marketing-content h1 {
       font-size: 40px;
     }
 }
 
   @media (max-width: 480px) {
-    .web-content h1 {
+    .digital-marketing-content h1 {
       font-size: 32px;
     }
 }
   
-  .web-content p {
+  .digital-marketing-content p {
     font-size: 1rem;
     margin-bottom: 1.5rem;
   }
   
-  .web-content ul {
+  .digital-marketing-content ul {
     list-style: none;
     padding: 0;
     margin-bottom: 2rem;
   }
   
-  .web-content ul li {
+  .digital-marketing-content ul li {
     font-size: 1rem;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
   }
   
-  .web-content ul li::before {
+  .digital-marketing-content ul li::before {
     content: '✔️';
     margin-right: 0.5rem;
     color: #4B58DB;
   }
   
-  .web-button {
+  .digital-marketing-button {
     background-color: #4B58DB;
     color: #fff;
     border: none;
@@ -81,52 +81,41 @@
     cursor: pointer;
   }
   
-  .web-button:hover {
+  .digital-marketing-button:hover {
     background-color: #3e47b1;
   }
   
  
-  .web-image {
+  .digital-marketing-image {
     flex: 1;
     padding: 1rem;
     text-align: center;
   }
   
-  /* .web-image img {
-    width: 100%;
-    max-width: 600px;
-    max-height: 500px;
-    border-radius: 15px;
-    transition: all ease 1s;
-
-  }
-  .web-image img:hover{
-    scale: 1.1;
-  } */
-  
-  .web-image img {
+  .digital-marketing-image img {
     width: 100%;
     max-width: 600px;
     max-height: 500px;
     border-radius: 15px;
     transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-}
+  }
 
-.web-image img:hover {
+  .digital-marketing-image img:hover{
     transform: scale(1.1);
-}
+  }
+  
 
   @media (max-width: 768px) {
-    .web-boost {
+    .digital-marketing-boost {
       flex-direction: column;
       padding: 1rem;
         gap: 1.5rem;
     }
-    .web-content, .web-image {
+    .digital-marketing-content, .digital-marketing-image {
       flex: none;
       width: 100%;
     }
-    .web-image {
+    .digital-marketing-image {
         padding: 4px;
       }
   }

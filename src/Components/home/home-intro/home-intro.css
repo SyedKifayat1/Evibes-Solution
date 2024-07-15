@@ -1,8 +1,6 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap'); */
 
 /* Container for the intro section */
 .intro {
-    /* background-color: #F0F5FB;  */
     background: linear-gradient(to bottom, #F0F5FB, #FFFFFF);
     display: flex; /* Flexbox layout */
     flex-direction: row; /* Horizontal layout */
@@ -100,12 +98,7 @@
 }
 
 
-/* @media (max-width:556px){
-    .heading{
-        font-size: 50px;
-    }
-    
-} */
+
 @media (max-width:1250px){
    
     .intro-img img{
@@ -114,11 +107,7 @@
     }
 }
 
-/* @media (max-width:430px){
-    .heading{
-        font-size: 40px;
-    }
-} */
+
 
 .intro-img {
     position: relative;

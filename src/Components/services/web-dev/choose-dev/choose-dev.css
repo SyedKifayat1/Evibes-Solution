@@ -1,7 +1,5 @@
 .choose-web-section {
     padding: 4rem;
-    /* Adjust as needed */
-    /* background-color: #f9f9f9; */
     text-align: center;
     font-family: "Space Grotesk", sans-serif;
     color: #002159;
@@ -23,14 +21,12 @@
     font-size: 48px;
     margin-bottom: 16px;
     font-weight: 900;
-
 }
 
 @media (max-width: 768px) {
     .choose-web-section {
         padding: 1.2rem;
         text-align: left;
-        
     }
     .choose-web-content {
         justify-content: left;
@@ -38,7 +34,6 @@
         max-width: 100%;
         margin: 0;
     }
-
     .choose-web-content h1 {
         font-size: 40px;
     }
@@ -70,37 +65,23 @@
 }
 
 .choose-web-card {
-    /* background-color: #fff; */
-    flex: 1;
-    padding: 0 20px;
-    padding-top: 0;
-    padding-bottom: 0;
-
-    /* border-radius: 8px; */
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    width: 300px; 
+    padding:0 20px;
     text-align: left;
-    min-width: 300px;
-    max-width: 100%;
-    /* Adjust width as needed for responsiveness */
     border-left: 3px solid #002159;
-    transition: all ease;
-    /* margin: 0 !important; */
+    transition: border-left 0.3s ease, transform 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
     max-height: 140px;
 }
 
 .choose-web-card:hover {
     border-left: 8px solid #002159;
-    /* margin: auto; */
-
+    transform: translateX(10px);
 }
 
-.choose-web-card h3 {
-    font-size: 1.4rem;
-    /* margin-bottom: 0.5rem; */
-    /* margin-top: 1rem; */
-    font-weight: 800;
-}
 
-/* .choose-web-card p {
-    max-width: 300px;
-} */
+@media (max-width:690px){
+    .choose-web-card {
+        width: 100%; 
+    }
+}

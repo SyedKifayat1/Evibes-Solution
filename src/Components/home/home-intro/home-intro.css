@@ -3,7 +3,7 @@
 /* Container for the intro section */
 .intro {
     /* background-color: #F0F5FB;  */
-    background: linear-gradient(to bottom, #800000, #FFFFFF);
+    background: linear-gradient(to bottom, #F0F5FB, #FFFFFF);
     display: flex; /* Flexbox layout */
     flex-direction: row; /* Horizontal layout */
     padding: 0 40px; /* Padding on the sides */

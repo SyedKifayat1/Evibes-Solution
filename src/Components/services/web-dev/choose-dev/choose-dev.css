@@ -1,0 +1,106 @@
+.choose-web-section {
+    padding: 4rem;
+    /* Adjust as needed */
+    /* background-color: #f9f9f9; */
+    text-align: center;
+    font-family: "Space Grotesk", sans-serif;
+    color: #002159;
+    display: flex;
+    flex-direction: column;
+}
+
+.choose-web-content {
+    max-width: 90%;
+    margin: 0 auto;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.choose-web-content h1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    font-weight: 900;
+
+}
+
+@media (max-width: 768px) {
+    .choose-web-section {
+        padding: 1.2rem;
+        text-align: left;
+        
+    }
+    .choose-web-content {
+        justify-content: left;
+        align-items: start;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .choose-web-content h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .choose-web-content h1 {
+        font-size: 32px;
+    }
+}
+
+.choose-web-content h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 800;
+}
+
+.choose-web-content p {
+    max-width: 90%;
+}
+
+.choose-web-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 40px;
+}
+
+.choose-web-card {
+    /* background-color: #fff; */
+    flex: 1;
+    padding: 0 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    /* border-radius: 8px; */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    text-align: left;
+    min-width: 300px;
+    max-width: 100%;
+    /* Adjust width as needed for responsiveness */
+    border-left: 3px solid #002159;
+    transition: all ease;
+    /* margin: 0 !important; */
+    max-height: 140px;
+}
+
+.choose-web-card:hover {
+    border-left: 8px solid #002159;
+    /* margin: auto; */
+
+}
+
+.choose-web-card h3 {
+    font-size: 1.4rem;
+    /* margin-bottom: 0.5rem; */
+    /* margin-top: 1rem; */
+    font-weight: 800;
+}
+
+/* .choose-web-card p {
+    max-width: 300px;
+} */

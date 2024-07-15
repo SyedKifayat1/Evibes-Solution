@@ -31,11 +31,31 @@ const Navbar = () => {
 
     document.addEventListener('click', handleClickOutside);
 
+    const closeDropDownLinks = document.querySelectorAll('.close-drop-down');
+    closeDropDownLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const isNavbarExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
+        if (isNavbarExpanded) {
+          navbarToggler.click();
+        }
+      });
+    });
+
     return () => {
       if (navbarToggler) {
         navbarToggler.removeEventListener('click', handleNavToggle);
       }
       document.removeEventListener('click', handleClickOutside);
+      closeDropDownLinks.forEach(link => {
+        link.removeEventListener('click', () => {
+          const navbarToggler = document.querySelector('.navbar-toggler');
+          const isNavbarExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
+          if (isNavbarExpanded) {
+            navbarToggler.click();
+          }
+        });
+      });
     };
   }, []);
 
@@ -71,27 +91,27 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-lg-5 me-lg-5 mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link close-drop-down" to="/">Home</Link>
             </li>
             <li className="nav-item dropdown">
               <Link className="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Services
               </Link>
               <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/digital-marketing">Digital Marketing</Link></li>
-                <li><Link className="dropdown-item" to="/web-dev">Web Development</Link></li>
-                <li><Link className="dropdown-item" to="/ui-ux">UI/UX</Link></li>
-                <li><Link className="dropdown-item" to="/seo-service">Search Engine Optimization</Link></li>
+                <li><Link className="dropdown-item close-drop-down" to="/digital-marketing">Digital Marketing</Link></li>
+                <li><Link className="dropdown-item close-drop-down" to="/web-dev">Web Development</Link></li>
+                <li><Link className="dropdown-item close-drop-down" to="/ui-ux">UI/UX</Link></li>
+                <li><Link className="dropdown-item close-drop-down" to="/seo-service">Search Engine Optimization</Link></li>
               </ul>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">About Us</Link>
+              <Link className="nav-link close-drop-down" to="/">About Us</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">Contact</Link>
+              <Link className="nav-link close-drop-down" to="/">Contact</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">Blog</Link>
+              <Link className="nav-link close-drop-down" to="/">Blog</Link>
             </li>
           </ul>
           <button className="btn" type="submit">Get a Quote</button>

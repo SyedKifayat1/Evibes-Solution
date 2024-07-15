@@ -1,10 +1,10 @@
 /* Basic styling */
 @media (min-width:996px) {
-    .seo-boost {
-        padding: 5rem !important;
+    .ui-ux-boost {
+        padding:1rem 6rem !important;
     }
 }
-.seo-boost {
+.ui-ux-boost {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -16,13 +16,13 @@
   }
   
 
-  .seo-content {
+  .ui-ux-content {
     flex: 1;
     padding: .5rem;
     margin-top: 2rem;
   }
   
-  .seo-content h4 {
+  .ui-ux-content h4 {
     font-size: 1rem;
     margin-bottom: 0.5rem;
     margin-top: 1rem;
@@ -30,48 +30,48 @@
   }
   
 
-  .seo-content h1 {
+  .ui-ux-content h1 {
     font-size: 48px;
     margin-bottom: 16px;
     font-weight: 700;
   }
   @media (max-width: 768px) {
-    .seo-content h1 {
+    .ui-ux-content h1 {
       font-size: 40px;
     }
 }
 
   @media (max-width: 480px) {
-    .seo-content h1 {
+    .ui-ux-content h1 {
       font-size: 32px;
     }
 }
   
-  .seo-content p {
+  .ui-ux-content p {
     font-size: 1rem;
     margin-bottom: 1.5rem;
   }
   
-  .seo-content ul {
+  .ui-ux-content ul {
     list-style: none;
     padding: 0;
     margin-bottom: 2rem;
   }
   
-  .seo-content ul li {
+  .ui-ux-content ul li {
     font-size: 1rem;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
   }
   
-  .seo-content ul li::before {
+  .ui-ux-content ul li::before {
     content: '✔️';
     margin-right: 0.5rem;
     color: #4B58DB;
   }
   
-  .seo-button {
+  .ui-ux-button {
     background-color: #4B58DB;
     color: #fff;
     border: none;
@@ -81,39 +81,41 @@
     cursor: pointer;
   }
   
-  .seo-button:hover {
+  .ui-ux-button:hover {
     background-color: #3e47b1;
   }
   
  
-  .seo-image {
+  .ui-ux-image {
     flex: 1;
     padding: 1rem;
     text-align: center;
   }
   
-  .seo-image img {
+  .ui-ux-image img {
     width: 100%;
     max-width: 600px;
+    max-height: 500px;
     border-radius: 15px;
     transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   }
-  .seo-image img:hover{
+
+  .ui-ux-image img:hover{
     transform: scale(1.1);
   }
   
 
   @media (max-width: 768px) {
-    .seo-boost {
+    .ui-ux-boost {
       flex-direction: column;
       padding: 1rem;
         gap: 1.5rem;
     }
-    .seo-content, .seo-image {
+    .ui-ux-content, .ui-ux-image {
       flex: none;
       width: 100%;
     }
-    .seo-image {
+    .ui-ux-image {
         padding: 4px;
       }
   }

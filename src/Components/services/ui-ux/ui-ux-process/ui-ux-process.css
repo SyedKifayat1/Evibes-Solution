@@ -1,0 +1,139 @@
+
+
+.ui-uxprocess {
+    max-width: 100%;
+    min-height: 650px;
+    padding: 10px 20px;
+    background-color: #DADADB;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    font-family: "Space Grotesk", sans-serif;
+    color: #002159;
+    margin: 0 1rem;
+
+}
+
+.ui-uxprocess h1 {
+    font-size: 48px;
+    margin: 6rem 0 4rem 0;
+    font-weight: 700;
+}
+
+
+.accordion {
+    width: 100%;
+    margin-bottom: 2rem 0;
+}
+
+.accordion-titles {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.accordion-title {
+    cursor: pointer;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-title.open {
+    background-color: #002159;
+    color: #ffff;
+}
+
+.accordion-content {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    padding: 4rem 1rem;
+    /* background-color: #fff; */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    gap: 2rem;
+}
+
+.accordion-content h3 {
+    max-width: 500px;
+    font-size: 26px;
+    font-weight: 800;
+    flex: 1;
+}
+
+
+.accordion-content p {
+    flex: 1;
+}
+
+.accordion-title,
+.accordion-content {
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .accordion {
+
+        margin-bottom: .5rem;
+    }
+
+    .ui-uxprocess {
+        min-height: 500px;
+
+    }
+
+    .accordion-content {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        align-items: self-start;
+        gap: 1rem;
+    }
+
+    .ui-uxprocess h1 {
+        margin: 1rem 0;
+    }
+
+    .accordion-titles {
+        flex-direction: column;
+       
+        justify-content: left;
+        align-items: start;
+    }
+
+    .accordion-title,
+    .accordion-content {
+        text-align: left;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .ui-uxprocess h1 {
+        font-size: 40px;
+    }
+
+    .accordion-content h3 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ui-uxprocess h1 {
+        font-size: 32px;
+    }
+
+    .accordion-content h3 {
+        font-size: 20px;
+    }
+}

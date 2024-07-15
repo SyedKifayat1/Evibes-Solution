@@ -1,0 +1,131 @@
+@media (min-width:1100px) {
+    .unique-ui-ux {
+        padding: 8rem !important;
+    }
+
+}
+
+.unique-ui-ux {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:4rem 2rem;
+    font-family: "Space Grotesk", sans-serif;
+    color: #002159;
+    gap: 2rem;
+  }
+  
+  .unique-ui-ux-content {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .unique-ui-ux-content h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  
+  .unique-ui-ux-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+  }
+  
+  .unique-ui-ux-content p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  
+  
+  .unique-ui-ux-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #002159;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    max-width: 150px;
+  }
+  
+  .unique-ui-ux-button:hover {
+    background-color: #00143f;
+  }
+  
+  .unique-ui-ux-image-container {
+    position: relative;
+    max-width: 400px;
+    min-height: 500px;
+    margin: 0 auto;
+  }
+  
+  .unique-ui-ux-image {
+    width: 100%;
+    min-height: 500px;
+    border-radius: 15px;
+    transition: transform 0.5s ease;
+  }
+  
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .scroll-button.left {
+    left: 0;
+  }
+  
+  .scroll-button.right {
+    right: 0;
+  }
+  
+  .scroll-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+
+  @media (max-width: 870px) {
+    .unique-ui-ux {
+        
+        flex-direction: column;
+    }}
+
+  @media (max-width: 768px) {
+    
+    .unique-ui-ux-content h1 {
+      font-size: 2rem;
+    }
+  
+  
+    .scroll-button {
+      padding: 0.4rem;
+    }
+  
+    
+  }
+  
+  @media (max-width: 480px) {
+    .unique-ui-ux-content h1 {
+      font-size: 1.5rem;
+    }
+  
+    
+    .scroll-button {
+      padding: 0.3rem;
+    }
+
+  }
+  

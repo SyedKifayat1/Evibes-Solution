@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './navbar.css';
 import Logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa'; // Importing icons
+
 const Navbar = () => {
+  const [hidden, setHidden] = useState(false);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+
   useEffect(() => {
     const handleNavToggle = () => {
       const navbarToggler = document.querySelector('.navbar-toggler');
@@ -16,26 +19,53 @@ const Navbar = () => {
     };
 
     const navbarToggler = document.querySelector('.navbar-toggler');
-    navbarToggler.addEventListener('click', handleNavToggle);
+    if (navbarToggler) {
+      navbarToggler.addEventListener('click', handleNavToggle);
+    }
 
-    // Add event listener for when the navbar is closed via clicking outside or other means
-    document.addEventListener('click', (event) => {
+    const handleClickOutside = (event) => {
       if (!event.target.closest('.navbar-collapse') && !event.target.closest('.navbar-toggler')) {
         document.body.classList.remove('no-scroll');
       }
-    });
+    };
+
+    document.addEventListener('click', handleClickOutside);
 
     return () => {
-      navbarToggler.removeEventListener('click', handleNavToggle);
-      document.removeEventListener('click', handleNavToggle);
+      if (navbarToggler) {
+        navbarToggler.removeEventListener('click', handleNavToggle);
+      }
+      document.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
+  const handleScroll = () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+
+    setLastScrollTop(currentScroll <= 0 ? 0 : currentScroll);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollTop]);
+
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className={`navbar navbar-expand-lg ${hidden ? 'hidden' : ''}`}>
       <div className="container">
-        <Link className="navbar-brand" to="/"><img className='logo' src={Logo} alt="" /></Link>
-        <button className="navbar-toggler"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <Link className="navbar-brand" to="/">
+          <img className='logo' src={Logo} alt="Logo" />
+        </Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-icon-toggle"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -54,9 +84,6 @@ const Navbar = () => {
                 <li><Link className="dropdown-item" to="/seo-service">Search Engine Optimization</Link></li>
               </ul>
             </li>
-            {/* <li className="nav-item">
-              <Link className="nav-link" to="/">Pricing</Link>
-            </li> */}
             <li className="nav-item">
               <Link className="nav-link" to="/">About Us</Link>
             </li>
@@ -72,6 +99,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

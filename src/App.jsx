@@ -28,7 +28,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home className="for-top-margin" />} />
         <Route path="/seo-service" element={<SEOService />} />
         {/* Add more routes as needed */}
         <Route path="*" element={<NotFound />} />

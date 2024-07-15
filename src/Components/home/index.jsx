@@ -9,7 +9,7 @@ import HomeTestimonials from './home-testimonial'
 import HomeCard from './home-card'
 const Home = () => {
   return (
-    <div className=''>
+    <div className='home'>
       <HomeIntro />
       <HomeGrow />
       <HomeFeatures />

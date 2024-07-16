@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './navbar.css';
 import Logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
-
+import useScrollToTop from '../ScrollToTop';
 const Navbar = () => {
   const [hidden, setHidden] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
-
+  useScrollToTop();
   useEffect(() => {
     const handleNavToggle = () => {
       const navbarToggler = document.querySelector('.navbar-toggler');
@@ -105,13 +105,13 @@ const Navbar = () => {
               </ul>
             </li>
             <li className="nav-item">
-              <Link className="nav-link close-drop-down" to="/">About Us</Link>
+              <Link className="nav-link close-drop-down" to="/about-us">About Us</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link close-drop-down" to="/">Contact</Link>
+              <Link className="nav-link close-drop-down" to="/contact-us">Contact</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link close-drop-down" to="/">Blog</Link>
+              <Link className="nav-link close-drop-down" to="/blogs">Blog</Link>
             </li>
           </ul>
           <button className="btn" type="submit">Get a Quote</button>

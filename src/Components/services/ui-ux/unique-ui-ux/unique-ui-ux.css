@@ -1,19 +1,19 @@
 @media (min-width:1100px) {
     .unique-ui-ux {
-        padding: 8rem !important;
+        padding: 6rem !important;
     }
 
 }
 
-.unique-ui-ux {
 
+   .unique-ui-ux {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding:4rem 2rem;
     font-family: "Space Grotesk", sans-serif;
     color: #002159;
-    gap: 2rem;
+    gap: 4rem;
   }
   
   .unique-ui-ux-content {
@@ -23,25 +23,6 @@
     gap: 2rem;
     margin-bottom: 2rem;
   }
-  
-  .unique-ui-ux-content h4 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-  }
-  
-  .unique-ui-ux-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: 900;
-  }
-  
-  .unique-ui-ux-content p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  
   
   .unique-ui-ux-button {
     padding: 0.75rem 1.5rem;
@@ -59,73 +40,72 @@
   }
   
   .unique-ui-ux-image-container {
-    position: relative;
     max-width: 400px;
     min-height: 500px;
-    margin: 0 auto;
+    min-width: 300px;
+    position: relative;
+    width: 100%;
+    /* max-width: 600px; */
   }
   
   .unique-ui-ux-image {
     width: 100%;
     min-height: 500px;
-    border-radius: 15px;
-    transition: transform 0.5s ease;
+    border-radius: 10px;
   }
   
-  .scroll-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
+  .dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
     border-radius: 50%;
-    padding: 0.5rem;
+    display: inline-block;
     cursor: pointer;
+    transition: background-color 0.6s ease;
   }
   
-  .scroll-button.left {
-    left: 0;
+  .dot.active {
+    background-color: #717171;
+  }
+  .unique-ui-ux-content h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
   }
   
-  .scroll-button.right {
-    right: 0;
+  .unique-ui-ux-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
   }
   
-  .scroll-button:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+  .unique-ui-ux-content p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
   }
   
-
-  @media (max-width: 870px) {
-    .unique-ui-ux {
-        
-        flex-direction: column;
-    }}
-
   @media (max-width: 768px) {
     
     .unique-ui-ux-content h1 {
       font-size: 2rem;
     }
   
-  
-    .scroll-button {
-      padding: 0.4rem;
-    }
-  
     
   }
-  
   @media (max-width: 480px) {
     .unique-ui-ux-content h1 {
       font-size: 1.5rem;
     }
-  
-    
-    .scroll-button {
-      padding: 0.3rem;
-    }
-
   }
-  
+  @media (max-width: 870px) {
+    .unique-ui-ux {
+        
+        flex-direction: column;
+    }}

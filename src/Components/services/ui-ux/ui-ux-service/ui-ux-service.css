@@ -1,0 +1,114 @@
+@media (min-width:996px) {
+    .ui-ux-service {
+        padding: 4rem !important;
+        gap: 4rem !important;
+
+    }
+    .ui-ux-service-card{
+            box-shadow: none !important;
+
+    }
+
+
+}
+
+.ui-ux-service {
+    font-family: "Space Grotesk", sans-serif;
+    /* Custom font */
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.ui-ux-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.ui-ux-header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+
+.ui-ux-service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+
+}
+
+.ui-ux-service-card {
+    background: #fff;
+    margin: .5rem 2rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex: 1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 320px;
+    min-height: 300px;
+    max-width: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.ui-ux-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.ui-ux-service-card .ui-ux-card-icon {
+    font-size: 2rem;
+    color: #007bff;
+    /* Icon color */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Change background color for the first three cards and repeat */
+.ui-ux-service-card:nth-child(3n+1) .ui-ux-card-icon {
+    background-color: #DAFBFE;
+}
+
+.ui-ux-service-card:nth-child(3n+2) .ui-ux-card-icon {
+    background-color: #E4E7FF;
+}
+
+.ui-ux-service-card:nth-child(3n+3) .ui-ux-card-icon {
+    background-color: #FEE3E6;
+}
+
+
+
+.ui-ux-service-card .ui-ux-card-icon img {
+    max-width: 10rem;
+    height: 2rem;
+}
+
+/* .ui-ux-service-card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+  } */
+
+.ui-ux-service-card h3 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    padding: 0 1rem;
+}
+
+.ui-ux-service-card p {
+    font-size: 1rem;
+    padding: 0 1rem 1rem;
+    color: #666;
+}

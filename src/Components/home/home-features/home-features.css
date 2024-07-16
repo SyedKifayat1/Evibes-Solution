@@ -12,7 +12,9 @@
       }
       .features-card {
         margin: 0 !important;
+        box-shadow: none !important;
       }
+      
 
 }
 .home-features {
@@ -58,7 +60,7 @@
 
 .features-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 .features-card .card-icon {

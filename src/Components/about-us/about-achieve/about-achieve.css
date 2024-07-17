@@ -1,0 +1,251 @@
+@media (min-width:960px)
+{
+    .about-achieve{
+    margin: 6rem !important;
+
+    }
+}
+
+
+
+.about-achieve {
+    background-color: #FFFFFF;
+    font-family: "Space Grotesk", sans-serif;
+    color: #002159;
+    margin-top: 6rem;
+    margin-bottom: 10rem;
+    padding: 20px;
+    height:100vh ;
+    display: flex;
+    flex-direction:row;
+    gap: 2rem;
+}
+
+
+.about-achieve-header{
+    flex: 1;
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.about-achieve-header h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 800;
+}
+
+
+.about-achieve-header h1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .about-achieve-header h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-achieve-header h1 {
+        font-size: 32px;
+    }
+}
+
+.about-achieve-header p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+
+
+.about-achieve-stats {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    flex-wrap:wrap;
+    justify-content: center;
+    gap:1rem ;
+}
+
+
+
+
+.about-achieve-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap;
+}
+
+.about-achieve-stat {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 100%;
+    max-height: 200px;
+    min-height: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.about-achieve-stat:hover {
+    box-shadow: 0 8px 16px 4px rgba(0, 0, 0, 0.2);
+}
+
+.about-achieve-stat h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.about-achieve-stat p {
+    font-size: 1em;
+}
+
+@media (max-width: 768px) {
+   
+    .about-achieve-stat h2 {
+        font-size: 1.5em;
+    }
+
+    .about-achieve-row {
+        gap: 15px;
+    }
+}
+
+@media (max-width:900px)
+{
+    .about-achieve-header{
+        
+        max-width: 100%;
+    }
+    .about-achieve{
+        flex-direction: column;
+        
+    }
+}
+
+@media (max-width:400px){
+    .about-achieve{
+        margin: 3rem 1rem 15rem 1rem;
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.about-achieve-stats::before,
+.about-achieve-stats::after {
+    content: '';
+    position: absolute;
+    align-items: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 1; 
+} */
+
+/* .about-achieve-stats::before {
+    background-image: url('../../assets/About-Us-triangle.webp');
+    transform: rotate(30deg);
+    top: 20px;
+    right: 0px;
+    width: 50vw; 
+    height: 75vh; 
+} */
+/* .about-achieve-stats::before {
+    background-image: url('../../assets/About-Us-triangle.webp');
+    transform: rotate(30deg);
+    top: 80px;
+    right: -180px; 
+    width: 50vw;
+    height: 75vh;
+}
+
+
+.about-achieve-stats::after {
+    background-image: url('../../assets/About-Us-dots.webp.webp');
+    left: 50px;
+    bottom: 60px;
+    width: 30vw; 
+    height: 30vh; 
+}
+@media (max-width: 1300px) {
+    .about-achieve-stats::before {
+        
+        width: 50vw; 
+        height: 70vh; 
+    }
+    
+    .about-achieve-stats::after {
+        
+        width: 25vw; 
+        height: 25vh; 
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-achieve-stats::before {
+        
+        width: 40vw; 
+        height: 60vh; 
+    }
+    
+    .about-achieve-stats::after {
+        
+        width: 20vw; 
+        height: 20vh; 
+    }
+}
+@media (max-width: 900px) {
+    .about-achieve-stats::before {
+        
+        width: 50vw; 
+        height: 60vh; 
+    }
+    
+    .about-achieve-stats::after {
+        
+        height:25vh; 
+    }
+}
+
+@media (max-width: 768px) {
+    .about-achieve-stats::before {
+        width: 50vw; 
+        height: 50vh; 
+    }
+
+    .about-achieve-stats::after {
+        width: 50vw; 
+        height: 50vh; 
+    }
+} */

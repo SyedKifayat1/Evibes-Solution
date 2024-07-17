@@ -1,0 +1,1069 @@
+import { getParam, isWhitespace, loadPdf } from './util.js'
+import AccProTransport from './acc-pro-transport.js'
+import { fix_table, point_in_circle, point_in_rect, rect_intersect } from './shape-utils.js'
+import { stringify } from './csv-stringify/sync.js'
+
+const DRAW_STATE = {
+  NONE: 0,
+  DRAWING_TABLE: 1,
+  ADDING_COLUMN: 2,
+  ADDING_ROW: 3,
+}
+
+const PICKED_ITEM = {
+  NONE: 0,
+  SELECTED_TEXT: 1,
+  UNSELECTED_TEXT: 2,
+  TABLE_TOP: 3,
+  TABLE_BOTTOM: 4,
+  TABLE_LEFT: 5,
+  TABLE_RIGHT: 6,
+  TABLE_COLUMN: 7,
+  TABLE_ROW: 8,
+  DELETE_COLUMN: 9,
+  DELETE_ROW: 10,
+  DELETE_TABLE: 11,
+}
+
+function initialState() {
+  return {
+    normalisedDragRectangle: [0,0,0,0],
+    pageIndex: 0,
+    zoom: 1.0,
+    pageIndexToTextContent: new Map(),
+    viewport: null,
+    selectedItems: {
+      pageIndex: 0,
+      itemIds: [],
+    },
+    idCounter: 0,
+    tables: [],
+    drawState: DRAW_STATE.NONE,
+    mouseX: 0,
+    mouseY: 0,
+    filename: null
+  }
+}
+
+function saveNormalisedDragRectangle(state, dragRectangle) {
+  state.normalisedDragRectangle[0] = dragRectangle[0] / state.viewport.width;
+  state.normalisedDragRectangle[1] = dragRectangle[1] / state.viewport.height;
+  state.normalisedDragRectangle[2] = dragRectangle[2] / state.viewport.width;
+  state.normalisedDragRectangle[3] = dragRectangle[3] / state.viewport.height;
+}
+
+function createDragRectangle(state) {
+  return [
+    state.normalisedDragRectangle[0] * state.viewport.width,
+    state.normalisedDragRectangle[1] * state.viewport.height,
+    state.normalisedDragRectangle[2] * state.viewport.width,
+    state.normalisedDragRectangle[3] * state.viewport.height,
+  ]
+}
+
+async function getTextContent(page, state) {
+  const textContent = await page.getTextContent()
+  const viewport = page.getViewport({ scale: state.zoom });
+  const replacement = []
+  const context = getContext()
+
+  for (let i = 0; i < textContent.items.length; i++) {
+    const textItem = textContent.items[i]
+
+    if (isWhitespace(textItem.str)) {
+      continue
+    }
+
+    const style = textContent.styles[textItem.fontName]
+    context.font = `1px ${style.fontFamily}`
+    const scaleX = textItem.transform[0]
+    const scaleY = textItem.transform[3]
+
+    const dimensions = context.measureText(textItem.str)
+    const textWidth = scaleX * dimensions.width
+    const normWidth = textWidth / viewport.width
+    const normHeight = textItem.height / viewport.height
+    const normX = textItem.transform[4] / viewport.width
+    const normY = 1 - (textItem.transform[5] / viewport.height)
+
+    replacement.push(normaliseTextItem(
+      state.idCounter++, textItem.str, 0, 0, normX, normY, normWidth, normHeight, textItem.fontName, scaleX, scaleY
+    ))
+  }
+
+  textContent.items = replacement
+  return textContent
+}
+
+function normaliseTextItem(id, text, xDelta, yDelta, x, y, width, height, fontName, scaleX, scaleY) {
+  return { id, text, xDelta, yDelta, x, y, width, height, fontName, scaleX, scaleY }
+}
+
+async function setupCanvas(pdfDocument, state) {
+  const canvas = getCanvas()
+
+  // Loading document and page text content
+  const page = await pdfDocument.getPage(state.pageIndex+1);
+  const viewport = page.getViewport({ scale: state.zoom });
+  state.viewport = viewport
+  canvas.width = viewport.width
+  canvas.height = viewport.height
+  setupDragActions(canvas, state)
+
+  document.getElementById('page-number-label').innerText = `Page ${state.pageIndex+1}/${state.pageIndexToTextContent.size} `
+
+  draw(state)
+}
+
+function draw(state) {
+  const context = getCanvas().getContext('2d')
+  const viewport = state.viewport
+  const textContent = state.pageIndexToTextContent.get(state.pageIndex)
+  context.resetTransform()
+  context.clearRect(0, 0, viewport.width, viewport.height)
+
+  for (let i = 0; i < textContent.items.length; i++) {
+    const textItem = textContent.items[i]
+    const style = textContent.styles[textItem.fontName]
+    context.font = `1px ${style.fontFamily}`
+
+    const [tx, ty, tw, th] = getTextRect(state, textItem)
+    const isSelected = itemIsSelected(state, textItem.id)
+
+    context.textBaseline = "top"
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.translate(tx, ty)
+    context.scale(state.zoom, state.zoom)
+    context.scale(textItem.scaleX, textItem.scaleY)
+    context.fillStyle = 'black'
+    context.fillText(textItem.text, 0, 0)
+
+    if (isSelected) {
+      context.resetTransform()
+      drawRectangle(context, tx, ty, tw, th, 'red')
+    }
+  }
+
+  context.resetTransform()
+  const [dx, dy, dw, dh] = createDragRectangle(state)
+  const {mouseX, mouseY} = state
+  drawRectangle(context, dx, dy, dw, dh, 'blue')
+
+  for (let i = 0; i < state.tables.length; i++) {
+    const table = state.tables[i]
+
+    if (table.pageIndex !== state.pageIndex) {
+      continue
+    }
+
+    let {x, y, width, height} = table
+    x *= viewport.width
+    y *= viewport.height
+    width *= viewport.width
+    height *= viewport.height
+
+    // Table outline
+    drawRectangle(context, x, y, width, height, 'green')
+
+    // Draw pending column/row depending on state
+    if (point_in_rect(mouseX, mouseY, x, y, width, height)) {
+      if (state.drawState === DRAW_STATE.ADDING_COLUMN) {
+        drawVerticalLine(context, mouseX, y, y + height, 'green')
+      }
+      else if (state.drawState === DRAW_STATE.ADDING_ROW) {
+        drawHorizontalLine(context, x, x + width, mouseY, 'green')
+      }
+    }
+
+    // Columns
+    for (let j = 0; j < table.columns.length; j++) {
+      const column = table.columns[j] * viewport.width
+      drawVerticalLine(context, column, y, y + height, 'green')
+      drawCircle(context, column, y, 5, 'white', 'red')
+    }
+
+    // Rows
+    for (let j = 0; j < table.rows.length; j++) {
+      const row = table.rows[j] * viewport.height
+      drawHorizontalLine(context, x, x+width, row, 'green')
+      drawCircle(context, x, row, 5, 'white', 'red')
+    }
+
+    // Delete Table Button
+    drawCircle(context, x+width, y, 5, 'red', 'red')
+  }
+}
+
+function getTextRect(state, textItem) {
+  return [
+    (textItem.x + textItem.xDelta) * state.viewport.width,
+    (textItem.y + textItem.yDelta) * state.viewport.height,
+    textItem.width * state.viewport.width,
+    textItem.height * state.viewport.height,
+  ]
+}
+
+function itemIsSelected(state, itemId) {
+  return state.pageIndex === state.selectedItems.pageIndex
+    && state.selectedItems.itemIds.includes(itemId)
+}
+
+function drawCircle(context, x, y, radius, fillStyle, strokeStyle) {
+  context.beginPath();
+  context.arc(x, y, radius, 0, 2 * Math.PI);
+  context.fillStyle = fillStyle;
+  context.fill();
+  context.lineWidth = 1;
+  context.strokeStyle = strokeStyle;
+  context.stroke();
+}
+
+
+function drawRectangle(context, x, y, w, h, strokeStyle) {
+  context.beginPath()
+  context.strokeStyle = strokeStyle
+  context.rect(x, y, w, h)
+  context.stroke()
+}
+
+function drawVerticalLine(context, x, y1, y2, strokeStyle) {
+    drawLine(context, x, y1, x, y2, strokeStyle)
+}
+
+function drawHorizontalLine(context, x1, x2, y, strokeStyle) {
+  drawLine(context, x1, y, x2, y, strokeStyle)
+}
+
+function drawLine(context, x1, y1, x2, y2, strokeStyle) {
+  context.beginPath()
+  context.strokeStyle = strokeStyle
+  context.moveTo(x1, y1)
+  context.lineTo(x2, y2)
+  context.stroke()
+}
+
+function setupDragActions(canvas, state) {
+  let startX = 0
+  let startY = 0
+  let draggedItem = null
+  let dragParam1 = null
+  let dragParam2 = null
+  const dragRectangle = [0,0,0,0]
+  const startRectangle = [0,0,0,0]
+
+  const clearDragRectangle = () => {
+    state.normalisedDragRectangle[0] = 0
+    state.normalisedDragRectangle[1] = 0
+    state.normalisedDragRectangle[2] = 0
+    state.normalisedDragRectangle[3] = 0
+
+    dragRectangle[0] = 0
+    dragRectangle[1] = 0
+    dragRectangle[2] = 0
+    dragRectangle[3] = 0
+  }
+
+  canvas.onmousedown = e => {
+    const x = e.offsetX - canvas.clientLeft
+    const y = e.offsetY - canvas.clientTop
+    state.mouseX = x
+    state.mouseY = y
+    const result = getPickedItem(state)
+    draggedItem = result[0]
+    dragParam1 = result[1]
+    dragParam2 = result[2]
+    console.log(`onmousedown() draggedItem=${draggedItem} dragParam1=${dragParam1} dragParam2=${dragParam2}`)
+
+    if (draggedItem === PICKED_ITEM.SELECTED_TEXT) {
+      canvas.style.cursor = 'grabbing'
+      startX = x
+      startY = y
+      startRectangle[0] = dragRectangle[0]
+      startRectangle[1] = dragRectangle[1]
+      startRectangle[2] = dragRectangle[2]
+      startRectangle[3] = dragRectangle[3]
+    }
+    else if (draggedItem === PICKED_ITEM.UNSELECTED_TEXT) {
+      state.selectedItems.itemIds = [dragParam1]
+      state.selectedItems.pageIndex = state.pageIndex
+      draw(state)
+    }
+    else if (draggedItem === PICKED_ITEM.DELETE_TABLE) {
+      const tableId = dragParam1
+      state.tables = state.tables.filter((x, i) => i !== tableId)
+      draw(state)
+    }
+    else if (draggedItem === PICKED_ITEM.DELETE_COLUMN) {
+      const tableId = dragParam1
+      const columnId = dragParam2
+      const columns = state.tables[tableId].columns
+      state.tables[tableId].columns = columns.filter((x, i) => i !== columnId)
+      draw(state)
+    }
+    else if (draggedItem === PICKED_ITEM.DELETE_ROW) {
+      const tableId = dragParam1
+      const rowId = dragParam2
+      const rows = state.tables[tableId].rows
+      state.tables[tableId].rows = rows.filter((x, i) => i !== rowId)
+      draw(state)
+    }
+    else if (
+      draggedItem === PICKED_ITEM.TABLE_TOP
+      || draggedItem === PICKED_ITEM.TABLE_BOTTOM
+      || draggedItem === PICKED_ITEM.TABLE_LEFT
+      || draggedItem === PICKED_ITEM.TABLE_RIGHT
+    ) {
+      const tableId = dragParam1
+      const table = state.tables[tableId]
+      startRectangle[0] = table.x * state.viewport.width
+      startRectangle[1] = table.y * state.viewport.height
+      startRectangle[2] = table.width * state.viewport.width
+      startRectangle[3] = table.height * state.viewport.height
+    }
+    else {
+      state.selectedItems.itemIds = []
+      startX = x
+      startY = y
+      draw(state)
+    }
+  }
+
+  canvas.onmousemove = async e => {
+    const x = e.offsetX - canvas.clientLeft
+    const y = e.offsetY - canvas.clientTop
+    state.mouseX = x
+    state.mouseY = y
+
+    if (draggedItem === PICKED_ITEM.NONE) {
+      const w = Math.abs(startX - x)
+      const h = Math.abs(startY - y)
+      dragRectangle[0] = Math.min(x, startX)
+      dragRectangle[1] = Math.min(y, startY)
+      dragRectangle[2] = w
+      dragRectangle[3] = h
+    }
+    else if (draggedItem === PICKED_ITEM.SELECTED_TEXT) {
+      const xDelta = (x - startX) / state.viewport.width
+      const yDelta = (y - startY) / state.viewport.height
+      const textItems = getSelectedItems(state, true)
+
+      for (let i = 0; i < textItems.length; i++) {
+        textItems[i].xDelta = xDelta
+        textItems[i].yDelta = yDelta
+      }
+    }
+    else if (draggedItem === PICKED_ITEM.TABLE_LEFT) {
+      const tableId = dragParam1
+      const table = state.tables[tableId]
+      const xDelta = startRectangle[0] - x
+      const newWidth = (startRectangle[2] + xDelta) / state.viewport.width
+      table.x = x / state.viewport.width
+      table.width = newWidth
+    }
+    else if (draggedItem === PICKED_ITEM.TABLE_RIGHT) {
+      const tableId = dragParam1
+      const table = state.tables[tableId]
+      const xDelta = startRectangle[0] + startRectangle[2] - x
+      table.width = (startRectangle[2] - xDelta) / state.viewport.width
+    }
+    else if (draggedItem === PICKED_ITEM.TABLE_TOP) {
+      const tableId = dragParam1
+      const table = state.tables[tableId]
+      const yDelta = startRectangle[1] - y
+      const newHeight = (startRectangle[3] + yDelta) / state.viewport.height
+      table.y = y / state.viewport.height
+      table.height = newHeight
+    }
+    else if (draggedItem === PICKED_ITEM.TABLE_BOTTOM) {
+      const tableId = dragParam1
+      const table = state.tables[tableId]
+      const yDelta = startRectangle[1] + startRectangle[3] - y
+      table.height = (startRectangle[3] - yDelta) / state.viewport.height
+    }
+    else if (draggedItem === PICKED_ITEM.TABLE_COLUMN) {
+      const tableId = dragParam1
+      const columnId = dragParam2
+      state.tables[tableId].columns[columnId] = x / state.viewport.width
+    }
+    else if (draggedItem === PICKED_ITEM.TABLE_ROW) {
+      const tableId = dragParam1
+      const rowId = dragParam2
+      state.tables[tableId].rows[rowId] = y / state.viewport.height
+    }
+    else {
+      const [hoveredItem] = getPickedItem(state)
+
+      if (hoveredItem === PICKED_ITEM.NONE) {
+        canvas.style.cursor = 'crosshair'
+      }
+      else if (hoveredItem === PICKED_ITEM.SELECTED_TEXT) {
+        canvas.style.cursor = 'grab'
+      }
+      else if (
+        hoveredItem === PICKED_ITEM.UNSELECTED_TEXT
+        || hoveredItem === PICKED_ITEM.DELETE_TABLE
+        || hoveredItem === PICKED_ITEM.DELETE_ROW
+        || hoveredItem === PICKED_ITEM.DELETE_COLUMN
+      ) {
+        canvas.style.cursor = 'pointer'
+      }
+      else if (
+        hoveredItem === PICKED_ITEM.TABLE_LEFT
+        || hoveredItem === PICKED_ITEM.TABLE_RIGHT
+        || hoveredItem === PICKED_ITEM.TABLE_COLUMN
+      ) {
+        canvas.style.cursor = 'col-resize'
+      }
+      else if (
+        hoveredItem === PICKED_ITEM.TABLE_TOP
+        || hoveredItem === PICKED_ITEM.TABLE_BOTTOM
+        || hoveredItem === PICKED_ITEM.TABLE_ROW
+      ) {
+        canvas.style.cursor = 'row-resize'
+      }
+    }
+
+    if (draggedItem === PICKED_ITEM.NONE) {
+      state.selectedItems.itemIds = getDragRectIntersections(state).map(it => it.id)
+      state.selectedItems.pageIndex = state.pageIndex
+    }
+
+    // Figure out what items are selected
+    saveNormalisedDragRectangle(state, dragRectangle)
+    draw(state)
+  }
+
+  canvas.onmouseup = async e => {
+    const x = e.offsetX - canvas.clientLeft
+    const y = e.offsetY - canvas.clientTop
+    const normalizedX = x / state.viewport.width
+    const normalizedY = y / state.viewport.height
+
+    if (state.drawState === DRAW_STATE.DRAWING_TABLE) {
+      const [x, y, width, height] = state.normalisedDragRectangle
+      state.tables.push({ x, y, width, height, rows: [], columns: [], pageIndex: state.pageIndex })
+    }
+    else if (state.drawState === DRAW_STATE.ADDING_COLUMN) {
+      const table = state.tables.find(table => {
+        return table.pageIndex === state.pageIndex && point_in_rect(normalizedX, normalizedY, table.x, table.y, table.width, table.height)
+      })
+
+      if (table !== undefined) {
+        table.columns.push(normalizedX)
+      }
+    }
+    else if (state.drawState === DRAW_STATE.ADDING_ROW) {
+      const table = state.tables.find(table => {
+        return table.pageIndex === state.pageIndex && point_in_rect(normalizedX, normalizedY, table.x, table.y, table.width, table.height)
+      })
+
+      if (table !== undefined) {
+        table.rows.push(normalizedY)
+      }
+    }
+    else if (draggedItem === PICKED_ITEM.SELECTED_TEXT) {
+      const selectedItems = getSelectedItems(state, true)
+      console.log('Finished moving items, selectedItems =', selectedItems)
+
+      selectedItems.forEach(textItem => {
+        textItem.x += textItem.xDelta
+        textItem.y += textItem.yDelta
+        textItem.xDelta = 0
+        textItem.yDelta = 0
+      })
+    }
+    else if (
+      draggedItem === PICKED_ITEM.TABLE_TOP
+      || draggedItem === PICKED_ITEM.TABLE_BOTTOM
+      || draggedItem === PICKED_ITEM.TABLE_RIGHT
+      || draggedItem === PICKED_ITEM.TABLE_LEFT
+      || draggedItem === PICKED_ITEM.TABLE_COLUMN
+      || draggedItem === PICKED_ITEM.TABLE_ROW
+    ) {
+      const tableId = dragParam1
+      fix_table(state.tables[tableId])
+    }
+
+    draggedItem = null
+    state.drawState = DRAW_STATE.NONE
+    clearDragRectangle()
+    draw(state)
+  }
+}
+
+function getPickedItem(state) {
+  if (state.drawState !== DRAW_STATE.NONE) {
+    return [PICKED_ITEM.NONE]
+  }
+
+  const inHLine = (y, x1, x2) => {
+    y *= state.viewport.height
+    x1 *= state.viewport.width
+    x2 *= state.viewport.width
+    return state.mouseX >= x1 && state.mouseX <= x2
+      && Math.abs(y - state.mouseY) <= 3
+  }
+  const inVLine = (x, y1, y2) => {
+    y1 *= state.viewport.height
+    y2 *= state.viewport.height
+    x *= state.viewport.width
+    return state.mouseY >= y1 && state.mouseY <= y2
+      && Math.abs(x - state.mouseX) <= 3
+  }
+
+  // Check if we're picking a table
+  for (let i = 0; i < state.tables.length; i++) {
+    const table = state.tables[i]
+
+    if (table.pageIndex !== state.pageIndex) {
+      continue
+    }
+
+    const top = table.y
+    const bottom = table.y + table.height
+    const left = table.x
+    const right = table.x + table.width
+    const columns = [...table.columns, left, right]
+    const rows = [...table.rows, top, bottom]
+
+    const scaledTop = top * state.viewport.height
+    const scaledRight = right * state.viewport.width
+    const scaledLeft = left * state.viewport.width
+
+    if (point_in_circle(state.mouseX, state.mouseY, scaledRight, scaledTop, 5)) {
+      return [PICKED_ITEM.DELETE_TABLE, i]
+    }
+
+    for (let j = 0; j < columns.length; j++) {
+      const column = columns[j]
+      const scaledColumn = column * state.viewport.width
+
+      if (point_in_circle(state.mouseX, state.mouseY, scaledColumn, scaledTop, 5)) {
+        return [PICKED_ITEM.DELETE_COLUMN, i, j]
+      }
+    }
+
+    for (let j = 0; j < rows.length; j++) {
+      const row = rows[j]
+      const scaledRow = rows[j] * state.viewport.height
+
+      if (point_in_circle(state.mouseX, state.mouseY, scaledLeft, scaledRow, 5)) {
+        return [PICKED_ITEM.DELETE_ROW, i, j]
+      }
+    }
+
+
+
+    for (let j = 0; j < columns.length; j++) {
+      const column = columns[j]
+
+      if (inVLine(column, top, bottom)) {
+        if (j === columns.length - 2) {
+          return [PICKED_ITEM.TABLE_LEFT, i]
+        }
+        if (j === columns.length - 1) {
+          return [PICKED_ITEM.TABLE_RIGHT, i]
+        }
+
+        return [PICKED_ITEM.TABLE_COLUMN, i, j]
+      }
+    }
+
+    for (let j = 0; j < rows.length; j++) {
+      const row = rows[j]
+
+      if (inHLine(row, left, right)) {
+        if (j === rows.length - 2) {
+          return [PICKED_ITEM.TABLE_TOP, i]
+        }
+        if (j === rows.length - 1) {
+          return [PICKED_ITEM.TABLE_BOTTOM, i]
+        }
+
+        return [PICKED_ITEM.TABLE_ROW, i, j]
+      }
+    }
+  }
+
+  // Check if we are picking TEXT
+  const textContent = state.pageIndexToTextContent.get(state.pageIndex)
+  const selectedItemIds = state.selectedItems.itemIds
+
+  for (let i = 0; i < textContent.items.length; i++) {
+    const textItem = textContent.items[i]
+    const [x, y, w, h] = getTextRect(state, textItem)
+
+    if (point_in_rect(state.mouseX, state.mouseY, x, y, w, h)) {
+      if (selectedItemIds.includes(textItem.id)) {
+        return [PICKED_ITEM.SELECTED_TEXT, textItem.id]
+      }
+      else {
+        return [PICKED_ITEM.UNSELECTED_TEXT, textItem.id]
+      }
+    }
+  }
+
+  return [PICKED_ITEM.NONE]
+}
+
+function renderGrids(state, transport, grids) {
+  const resultsContainer = document.getElementById('results-container')
+  resultsContainer.innerText = '';
+
+  // Header
+  const header = document.createElement('h1')
+  header.innerText = 'Extracted Tables'
+  resultsContainer.appendChild(header)
+
+  // Download Button
+  const button = document.createElement('button')
+  button.innerText = 'Download CSV'
+  resultsContainer.appendChild(button)
+
+  button.onclick = e => {
+    //const filename = getParam('filename', 'transactions.pdf')
+    transport.createUserEvent(`INSPECT_DOWNLOADED_CSV`)
+    const csv = grids.map(grid => stringify(grid)).join('\n\n');
+    const anchor = document.createElement('a');
+    anchor.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(csv));
+    anchor.setAttribute('download', `${state.filename}.csv`);
+
+    anchor.style.display = 'none';
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  }
+
+  grids.forEach(grid => {
+    const table = document.createElement('table')
+
+    for (let i = 0; i < grid.length; i++) {
+      const tr = document.createElement('tr')
+
+      for (let j = 0; j < grid[i].length; j++) {
+        const value = grid[i][j]
+        const cell = i === 0 ? document.createElement('th') : document.createElement('td')
+        cell.innerText = value
+        tr.appendChild(cell)
+      }
+
+      table.appendChild(tr)
+    }
+
+    resultsContainer.appendChild(table)
+  })
+}
+
+async function pageLoaded() {
+  const context = getContext()
+  const uuid = getParam('uuid')
+  const env = getParam('env', 'dev')
+
+  if (uuid === null) {
+    setLoading(false)
+    displayError("Error: uuid parameter was not provided.")
+    return;
+  }
+
+  try {
+    const token = localStorage.getItem('bsc-authToken')
+    const transport = new AccProTransport(token, env)
+    const [pdf, filename] = await transport.getPdf(uuid)
+    const pdfDocument = await loadPdf(pdf)
+    const state = initialState()
+    state.filename = filename
+
+    const start = performance.now()
+    let wordCount = 0
+
+    // Load up all text content
+    for (let pageIndex = 0; pageIndex < pdfDocument.numPages; pageIndex++) {
+      const page = await pdfDocument.getPage(pageIndex+1);
+      const textContent = await getTextContent(page, state)
+      wordCount += textContent.items.length
+      state.pageIndexToTextContent.set(pageIndex, textContent)
+      page.cleanup();
+    }
+
+    console.log(`Took ${performance.now() - start} ms to extract text.`)
+
+    if (wordCount === 0) {
+      console.log(`PDF has no text, will get OCRed bounds from the API`)
+      const wordBounds = await transport.getWordBounds(uuid)
+
+      for (let pageIndex = 0; pageIndex < wordBounds.length; pageIndex++) {
+        const page = wordBounds[pageIndex]
+        const items = page.bounds.map(it => {
+          const scale = page.dimensions.y * it.height * 0.70
+          return normaliseTextItem(state.idCounter++, it.text, 0, 0, it.x, it.y, it.width, it.height, 'monospace', scale, scale)
+        })
+
+        const textContent = { items, styles: { monospace: { fontFamily: 'monospace' } } }
+        state.pageIndexToTextContent.set(pageIndex, textContent)
+      }
+    }
+
+    // Draw the current page
+    await setupCanvas(pdfDocument, state)
+
+    async function zoomIn() {
+      state.zoom += 0.2
+      await setupCanvas(pdfDocument, state)
+    }
+
+    async function zoomOut() {
+      state.zoom -= 0.2
+      await setupCanvas(pdfDocument, state)
+    }
+
+    async function previousPage() {
+      state.pageIndex = Math.max(0, state.pageIndex - 1)
+      await setupCanvas(pdfDocument, state)
+    }
+
+    async function nextPage() {
+      state.pageIndex = Math.min(pdfDocument.numPages - 1, state.pageIndex + 1)
+      await setupCanvas(pdfDocument, state)
+    }
+
+    const createTable = () => {
+      const selected = getSelectedItems(state, true)
+
+      if (selected.length === 0) {
+        state.drawState = DRAW_STATE.DRAWING_TABLE
+        return
+      }
+
+      console.log(`${selected.length} items have been selected`)
+      let minX = Number.MAX_VALUE
+      let maxX = Number.MIN_VALUE
+      let minY = Number.MAX_VALUE
+      let maxY = Number.MIN_VALUE
+
+      for (let i = 0; i < selected.length; i++) {
+        const [x,y,w,h] = getTextRect(state, selected[i])
+        const right = x+w
+        const bottom = y+h
+
+        if (x < minX) minX = x
+        if (right > maxX) maxX = right
+        if (y < minY) minY = y
+        if (bottom > maxY) maxY = bottom
+      }
+
+      const x = minX / state.viewport.width
+      const w = (maxX - minX) / state.viewport.width
+      const y = minY / state.viewport.height
+      const h = (maxY - minY) / state.viewport.height
+      state.tables.push({ x, y, width: w, height: h, rows: [], columns: [], pageIndex: state.pageIndex })
+      draw(state)
+    }
+
+    const addColumn = () => state.drawState = DRAW_STATE.ADDING_COLUMN
+    const addRow = () => state.drawState = DRAW_STATE.ADDING_ROW
+
+    const extractGrids = () => {
+      if (state.tables.length === 0) {
+        alert("Please draw at least one table onto the document.")
+        return
+      }
+
+      let grids = state.tables.map(table => {
+        const textItems = state.pageIndexToTextContent.get(table.pageIndex)
+        const allColumns = [table.x, ...table.columns, table.x + table.width]
+          .map(it => it * state.viewport.width)
+          .sort((a, b) => a - b);
+
+        const allRows = [table.y, ...table.rows, table.y + table.height]
+          .map(it => it * state.viewport.height)
+          .sort((a, b) => a - b);
+
+        const grid = []
+
+        for (let i = 0; i < allRows.length -1; i++) {
+          const row = []
+
+          for (let j = 0; j < allColumns.length -1; j++) {
+            row.push(null)
+          }
+
+          grid.push(row)
+        }
+
+        for (let i = 0; i < textItems.items.length; i++) {
+          const textItem = textItems.items[i]
+          const [x, y, w, h] = getTextRect(state, textItem)
+          const tx = table.x * state.viewport.width
+          const ty = table.y * state.viewport.height
+          const tw = table.width * state.viewport.width
+          const th = table.height * state.viewport.height
+
+          if (rect_intersect(x, y, w, h, tx, ty, tw, th)) {
+            const column = associateToColumns(x, w, allColumns)
+            const row = associateToColumns(y, h, allRows)
+
+            if (row === -1) {
+              console.log(`Failed to associate ${textItem.text} with a row`)
+              continue
+            }
+            if (column === -1) {
+              console.log(`Failed to associate ${textItem.text} with a column`)
+              continue
+            }
+
+            if (grid[row][column] === null) {
+              grid[row][column] = textItem.text
+            }
+            else {
+              grid[row][column] += " "
+              grid[row][column] += textItem.text
+            }
+          }
+        }
+
+        return grid
+      })
+
+      // Count rows
+      let rowCount = 0
+      grids.forEach(grid => rowCount += grid.length)
+      grids = mergeGrids(grids)
+
+      transport.createUserEvent(`INSPECT_EXPORTED_${grids.length}_GRIDS_${rowCount}_ROWS`)
+      renderGrids(state, transport, grids)
+    }
+
+    const breakUpText = () => {
+      const textContent = state.pageIndexToTextContent.get(state.pageIndex)
+      const selectedItems = getSelectedItems(state, true)
+      const brokenApartItems = selectedItems.flatMap(it => breakApart(context, state, it, textContent))
+
+      textContent.items = getSelectedItems(state, false)
+      brokenApartItems.forEach(item => {
+        textContent.items.push(item)
+        state.selectedItems.itemIds.push(item.id)
+      })
+      draw(state)
+    }
+
+    document.getElementById('create-table').onclick = createTable
+    document.getElementById('add-column').onclick = addColumn
+    document.getElementById('add-row').onclick = addRow
+    document.getElementById('next-page').onclick = nextPage
+    document.getElementById('previous-page').onclick = previousPage
+    document.getElementById('zoom-in').onclick = zoomIn
+    document.getElementById('zoom-out').onclick = zoomOut
+    document.getElementById('extract-grids').onclick = extractGrids
+    document.getElementById('break-up-text').onclick = breakUpText
+
+    document.onkeydown = async function(e) {
+      const code = e.code
+
+      if (code === "Backspace" || code === "Delete") {
+        const textItems = state.pageIndexToTextContent.get(state.pageIndex)
+        textItems.items = getSelectedItems(state, false)
+        draw(state)
+      }
+      else if (code === "ArrowLeft") {
+        await previousPage()
+      }
+      else if (code === "ArrowRight") {
+        await nextPage()
+      }
+      else if (code === "Equal" || code === "NumpadAdd") {
+        // Zoom In
+        await zoomIn()
+      }
+      else if (code === "Minus" || code === "NumpadSubtract") {
+        // Zoom Out
+        await zoomOut()
+      }
+      else if (code === "KeyB") {
+        breakUpText()
+      }
+      else if (code === "Digit1") {
+        createTable()
+      }
+      else if (code === "Digit2") {
+        addColumn()
+      }
+      else if (code === "Digit3") {
+        addRow()
+      }
+      else if (code === "Escape") {
+        state.drawState = DRAW_STATE.NONE
+      }
+      else if (code === 'KeyE') {
+        extractGrids()
+      }
+    }
+  }
+  catch (error) {
+    console.error(error)
+    displayError(error.toString())
+  }
+  finally {
+    setLoading(false)
+  }
+}
+
+function mergeGrids(grids) {
+  const headersMatch = (gridA, gridB) => {
+    if (gridA.length === 0 || gridB.length === 0 || gridA[0].length !== gridB[0].length) {
+      return false
+    }
+
+    for (let i = 0; i < gridA[0].length; i++) {
+      if (gridA[0][i] !== gridB[0][i]) {
+        return false
+      }
+    }
+
+    return true
+  }
+
+  const merge = (gridA, gridB) => {
+    for (let i = 1; i < gridB.length; i++) {
+      gridA.push(gridB[i])
+    }
+  }
+
+  const mergedIndices = []
+
+  for (let i = 0; i < grids.length; i++) {
+    const gridA = grids[i]
+
+    for (let j = i+1; j < grids.length; j++) {
+      if (mergedIndices.includes(j)) {
+        console.log(`grid index ${j} has already been merged`)
+        continue
+      }
+
+      const gridB = grids[j]
+
+      if (headersMatch(gridA, gridB)) {
+        console.log(`grid index ${i} and grid index ${j} have the same headers`)
+        merge(gridA, gridB)
+        mergedIndices.push(j)
+      }
+    }
+  }
+
+  const filtered = []
+
+  for (let i = 0; i < grids.length; i++) {
+    if (!mergedIndices.includes(i)) {
+      filtered.push(grids[i])
+    }
+  }
+
+  return filtered
+}
+
+function setLoading(isLoading) {
+  document.getElementById('loading-container').style.display = isLoading ? 'block' : 'none';
+}
+
+
+function displayError(message) {
+  const errorContainer = document.getElementById('error-container')
+  errorContainer.style.display = 'block';
+  errorContainer.innerText = message
+}
+
+function associateToColumns(rStart, rWidth, columns) {
+  const wordLeft = rStart
+  const wordRight = rStart + rWidth
+
+  for (let i = 0; i < columns.length - 1; i++) {
+    const colLeft = columns[i]
+    const colRight = columns[i+1]
+
+    const slicedLeft = Math.max(wordLeft, colLeft)
+    const slicedRight = Math.min(wordRight, colRight)
+    const slicedWidth = slicedRight - slicedLeft
+    const percentage = slicedWidth / rWidth
+
+    if (percentage >= 0.5) {
+      return i
+    }
+  }
+
+  return -1
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  pageLoaded().catch(error => {
+    console.error('Failed to load page\nerror = ' + error.toString())
+    if (error.stack) console.error(error.stack)
+  })
+})
+
+function breakApart(context, state, textItem, textContent) {
+  const style = textContent.styles[textItem.fontName]
+  context.font = `1px ${style.fontFamily}`
+
+  const pieces = textItem.text.split(" ")
+
+  if (pieces.length === 1) {
+    return [textItem]
+  }
+
+  let xDelta = 0
+  const scaleX = textItem.scaleX
+  const spaceWidth = (context.measureText(" ").width * scaleX * state.zoom) / state.viewport.width
+
+  return pieces.map(piece => {
+    const pieceWidth = (context.measureText(piece).width * scaleX * state.zoom) / state.viewport.width
+
+    const mutated = {
+      ...textItem,
+      text: piece,
+      id: state.idCounter++,
+      x: textItem.x + xDelta,
+      width: pieceWidth
+    }
+    xDelta += pieceWidth
+    xDelta += spaceWidth
+    return mutated
+  })
+}
+
+function getCanvas() {
+  return document.getElementsByTagName('canvas')[0]
+}
+
+function getContext() {
+  return getCanvas().getContext('2d')
+}
+
+function filterTextItems(state, predicate) {
+  const textItems = state.pageIndexToTextContent.get(state.pageIndex)
+  const output = []
+
+  for (let i = 0; i < textItems.items.length; i++) {
+    const textItem = textItems.items[i]
+    const textRect = getTextRect(state, textItem)
+
+    if (predicate(textItem, textRect)) {
+      output.push(textItem)
+    }
+  }
+
+  return output
+}
+
+function getSelectedItems(state, selected) {
+  return filterTextItems(state, (textItem, _) => {
+    return itemIsSelected(state, textItem.id) === selected
+  })
+}
+
+function getDragRectIntersections(state) {
+  const [dx, dy, dw, dh] = createDragRectangle(state)
+
+  return filterTextItems(state, (textItem, textRect) => {
+    const [tx, ty, tw, th] = textRect
+    return rect_intersect(tx, ty, tw, th, dx, dy, dw, dh)
+  })
+}

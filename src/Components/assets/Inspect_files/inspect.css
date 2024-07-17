@@ -1,0 +1,36 @@
+canvas {
+    border: 1px solid black;
+}
+
+h1 {
+    font-family: monospace;
+}
+
+p,a,span {
+    font-family: monospace;
+    font-size: 18px;
+}
+
+button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: monospace;
+}
+
+table {
+    font-family: monospace;
+    border-collapse: collapse;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#error-container {
+    color: red;
+    display: none;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: left;
+    padding: 5px;
+}

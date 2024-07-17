@@ -87,7 +87,7 @@
 
 .drop-down-title {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 800;
     margin-bottom: 10px;
 }
 
@@ -142,11 +142,6 @@
 }
 
 @media (max-width: 480px) {
-    
-
-    .drop-down-title {
-        font-size: 1rem;
-    }
 
     .drop-down-description {
         font-size: 0.85rem;

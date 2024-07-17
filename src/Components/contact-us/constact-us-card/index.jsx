@@ -1,0 +1,61 @@
+import React from 'react';
+import './contact-us-card.css';
+
+const ContactUsCard = () => {
+    return (
+        <section className='contact-us-card'>
+            <div className='contact-info'>
+                <div>
+                    <h2>Contact Information</h2>
+                    <p>We’ll create high-quality linkable content and build at least 40 high-authority.</p>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <div className="contact-info-icon call-icon">
+                                {/* <i className="fa-solid phone-volume"></i> */}
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <p>+92 3118120088</p>
+                        </li>
+                        <li>
+                            <div className="contact-info-icon mail-icon">
+                            <i class="fa-solid fa-envelope"></i>
+
+                            </div>
+                            <p>info@syedkifayat.online</p>
+                        </li>
+                        <li>
+                            <div className="contact-info-icon location-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            </div>
+                            <p>Lahore, Pakistan</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className='contact-form'>
+                <form>
+                    <div>
+                        <label htmlFor="name">Name</label>
+                        <input type="text" id="name" name="name" />
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" id="email" name="email" />
+                    </div>
+                    <div>
+                        <label htmlFor="message">Message</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    );
+}
+
+export default ContactUsCard;

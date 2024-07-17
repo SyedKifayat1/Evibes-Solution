@@ -1,0 +1,157 @@
+@media (min-width: 996px) {
+    .contact-us-card {
+        margin: 6rem !important;
+    }
+
+
+}
+.contact-us-card {
+    margin: 6rem 1rem 1rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px 20px;
+    font-family: "Space Grotesk", sans-serif;
+    color: #002159;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    gap:20px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    /* margin-bottom: 10px; */
+    color: #ffff;
+    background-color: #4787FA;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 4rem 2rem 2rem 2rem;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contact-info-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    background-size: cover;
+}
+
+
+
+.contact-form {
+    flex: 1;
+    min-width: 320px;
+    max-width: 700px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.contact-form form div {
+    margin-bottom: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    max-height: 200px;
+    min-height: 150px;
+}
+
+.contact-form button {
+    padding: 20px 20px;
+    background-color: #4787FA;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 200px;
+}
+
+.contact-form button:hover {
+    background-color: #002159;
+}
+
+@media (max-width: 768px) {
+    .contact-us-card {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 20px;
+    }
+    .contact-info h2{
+        font-size: 2rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        max-width: 100%;
+
+    }
+    .contact-form {
+        min-width: 100%;
+        
+    }
+}
+
+
+@media (max-width: 420px) {
+    .contact-form button {
+        padding: 15px 0px;}
+    
+    .contact-info h2{
+        font-size: 1.6rem;
+    }
+    .contact-us-card{
+        padding: 10px 10px;
+    }
+}

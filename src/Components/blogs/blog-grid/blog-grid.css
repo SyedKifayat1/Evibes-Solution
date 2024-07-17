@@ -1,0 +1,148 @@
+.blog-grid {
+    padding: 2rem;
+    margin-top: 4rem;
+    /* background-color: #f8f8f8; */
+  }
+  
+  .blog-grid-description {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .blog-grid-description h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .blog-grid-description p {
+    width: 60%;
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .blog-grid-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .blog-grid-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  .blog-card-img img { 
+    width: 400px;
+    max-height: 400px;
+  }
+  
+  .blog-card-title {
+    font-size: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .blog-publish-date {
+    font-size: 1rem;
+    color: #999;
+    margin-left: 1rem;
+  }
+  
+  .blog-card-description {
+    font-size: 1rem;
+    color: #666;
+    padding: 0 1rem;
+    flex-grow: 1;
+  }
+  
+  .blog-card-button {
+    background-color: #FEAA47;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    max-width: 150px;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .blog-card-button:hover {
+    background-color: #e6993c;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 910px) {
+    
+    .blog-card-img img {
+        width: 100%;
+        max-height: 500px;
+      }
+    .blog-grid-description h1 {
+      font-size: 2rem;
+    }
+  
+    .blog-grid-description p {
+      font-size: 1rem;
+      width: 100%;
+    }
+  
+    .blog-grid-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .blog-grid-card {
+      max-width: 90%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .blog-card-img img {
+        width: 100%;
+      }
+    .blog-grid {
+        padding:2rem 1rem;
+    }
+    .blog-grid-description h1 {
+      font-size: 1.5rem;
+    }
+  
+    .blog-grid-description p {
+      font-size: 0.9rem;
+    }
+  
+    .blog-grid-card {
+      max-width: 100%;
+    }
+  
+    .blog-card-title {
+      font-size: 1.2rem;
+    }
+  
+    .blog-card-description {
+      font-size: 0.9rem;
+    }
+  
+    .blog-publish-date {
+      font-size: 0.9rem;
+    }
+  
+    .blog-card-button {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
+  

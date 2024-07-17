@@ -10,6 +10,7 @@ import DigitalMarketing from './Components/services/digital-marketing';
 import UiUxService from './Components/services/ui-ux';
 import AboutUs from './Components/about-us';
 import ContactUs from './Components/contact-us';
+import Blogs from './Components/blogs';
 const NotFound = () => <h1 style={{textAlign:"center", padding:"4rem", color:"red"}}>404 - Not Found</h1>;
 function App() {
  
@@ -24,6 +25,7 @@ function App() {
         <Route path="/ui-ux" element={<UiUxService />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/blogs" element={<Blogs />} />
         {/* Add more routes as needed */}
         <Route path="*" element={<NotFound />} />
       </Routes>

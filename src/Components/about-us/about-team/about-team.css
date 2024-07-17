@@ -8,13 +8,16 @@
 }
 
 .about-team h4 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 800;
 }
 
 .about-team h1 {
-    font-size: 2.5em;
+    font-size: 48px;
     margin-bottom: 20px;
+    font-weight: 700;
 }
 
 .about-team-cards {
@@ -48,11 +51,18 @@
 .about-team-card h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
+    font-weight: 800;
 }
 
 .about-team-card p {
     font-size: 1em;
     color: #777;
+}
+
+.about-team .about-team-h2 {
+    font-size: 36px;
+    margin-top: 20px;
+    font-weight: 700;
 }
 
 @media (max-width: 1024px) {
@@ -62,21 +72,25 @@
 }
 
 @media (max-width: 768px) {
+    .about-team h1 {
+        font-size: 40px;
+    }
     .about-team-card {
         width: calc(50% - 20px);
     }
-
-    .about-team h1 {
-        font-size: 2em;
+    .about-team .about-team-h2 {
+        font-size: 30px;
     }
 }
 
 @media (max-width: 480px) {
+    .about-team h1 {
+        font-size: 32px;
+    }
     .about-team-card {
         width: calc(100% - 20px);
     }
-
-    .about-team h1 {
-        font-size: 1.5em;
+    .about-team .about-team-h2 {
+        font-size: 24px;
     }
 }

@@ -40,8 +40,8 @@ const AboutTeam = () => {
                 <h2>Alex Martinez</h2>
                 <p>Chief Designer</p>
             </div>
-            <h2>Our committed <u>staff members</u> are ready to help.</h2>
         </div>
+        <h2 className='about-team-h2'>Our committed <u>staff members</u> are ready to help.</h2>
     </section>
   )
 }

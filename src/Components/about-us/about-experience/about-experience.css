@@ -1,0 +1,154 @@
+@media (min-width:996px) {
+    .about-experience {
+        padding: 6rem !important;
+    }
+}
+.about-experience {
+    padding: 50px 20px;
+    font-family: "Space Grotesk", sans-serif;
+    color: #002159;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.about-experience-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.about-experience-content h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 800;
+}
+
+
+.about-experience-content h1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .about-experience-content h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-experience-content h1 {
+        font-size: 32px;
+    }
+}
+
+.about-experience-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-experience-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.about-experience-drop-downs {
+    flex: 1;
+}
+
+.about-experience-drop-down {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 70px; 
+    transition: height 0.5s ease, box-shadow 0.3s ease;
+}
+
+.about-experience-drop-down.active {
+    height: 200px; /* adjust according to content */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.drop-down-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drop-down-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.drop-down-icon::after {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f067'; /* plus icon */
+    transition: transform 0.3s ease;
+}
+
+.about-experience-drop-down.active .drop-down-icon::after {
+    content: '\f068'; /* minus icon */
+}
+
+.drop-down-description {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    max-height: 0; /* initially hidden */
+    overflow: hidden;
+}
+
+.about-experience-drop-down.active .drop-down-description {
+    opacity: 1;
+    max-height: 1000px; /* adjust according to content */
+}
+
+@media (max-width: 1024px) {
+    .about-experience-wrapper {
+        flex-direction: column;
+    }
+    
+    .about-experience-content,
+    .about-experience-drop-downs {
+        flex: none;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    
+
+    .drop-down-title {
+        font-size: 1.25rem;
+    }
+
+    .drop-down-description {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    
+
+    .drop-down-title {
+        font-size: 1rem;
+    }
+
+    .drop-down-description {
+        font-size: 0.85rem;
+    }
+}

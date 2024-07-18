@@ -129,7 +129,7 @@
 
 
 .card-icon i{
-    color: #800000;
+    color: #002159;
     transition: all ease .5s;
 }
 .card-icon i:hover {
@@ -161,7 +161,7 @@
 }
 
 .learn-more-btn:hover {
-    background-color: #800000 !important;
+    background-color: #002159 !important;
     color: #fff;
     border: none;
     cursor: pointer;

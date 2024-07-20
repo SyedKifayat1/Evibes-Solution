@@ -13,7 +13,7 @@
  .whatsapp-btn-container {
     position: fixed;
     left: 20px;
-    bottom: 20px;
+    bottom: 15px;
     padding: 5px;
     z-index: 2000;
     display: flex;

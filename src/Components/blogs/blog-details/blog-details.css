@@ -1,0 +1,42 @@
+.blog-details {
+    max-width: 800px;
+    margin-top: 4rem !important;
+    margin: auto;
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+  }
+  
+  .blog-meta {
+    margin-bottom: 1rem;
+    color: #777;
+  }
+  
+  .blog-image {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+  }
+  
+  .blog-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  
+  .blog-table th, .blog-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .blog-table th {
+    background-color: #f2f2f2;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin: 1rem 0 0.5rem;
+  }
+  
+  p {
+    margin: 0.5rem 0;
+  }
+  

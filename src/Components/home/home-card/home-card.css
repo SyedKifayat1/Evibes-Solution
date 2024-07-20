@@ -36,8 +36,10 @@
     margin-top: 1rem;
     padding: 1rem 2.5rem;
     font-size: 17px;
-    background-color: #ffffff;
-    color: #4787FA;
+    /* background-color: #ffffff; */
+    background-color: transparent;
+    background-image: linear-gradient(192deg, #FF87FA 17%, #AF3CFF 100%);
+    color: #fff;
     border: none;
     border-radius: 10px;
     font-weight: 500;
@@ -46,9 +48,13 @@
   }
   
   .book-button:hover {
-    background-color: #002159;
-    color: #fff;
-  }
+   
+    background-image: none;
+    border:1px solid #FF87FA;
+    background-color: #fff;
+    color: #FF87FA;
+  
+}
   
 
   .home-card-content h3 {

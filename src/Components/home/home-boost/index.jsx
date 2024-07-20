@@ -1,6 +1,7 @@
 import React from 'react';
 import './home-boost.css';
 import SeoImg from '../../assets/seo-analyze.webp';
+// import SeoImg from '../../assets/home-boost-traffic.png';
 import SeoVisitorImg from '../../assets/seo-visitors.webp';
 import SeoLikeImg from '../../assets/seo-like.webp';
 

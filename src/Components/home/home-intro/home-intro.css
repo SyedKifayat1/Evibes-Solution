@@ -1,44 +1,68 @@
-
 /* Container for the intro section */
 .intro {
-    background: linear-gradient(to bottom, #F0F5FB, #FFFFFF);
+    position: relative; /* Position relative to contain the video */
+    /* background: linear-gradient(to bottom, #F0F5FB, #FFFFFF); */
     display: flex; /* Flexbox layout */
     flex-direction: row; /* Horizontal layout */
     padding: 0 40px; /* Padding on the sides */
     padding-bottom: 2rem;
+    overflow: hidden; /* Ensure no overflow */
+    min-height: 100vh;
+    color: #ffff !important;
+    font-family: "Space Grotesk", sans-serif;
+
 }
 
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensure it is behind the content */
+    opacity: 1; /* Optional: add opacity to make text more readable */
+}
 
 /* Container for the intro text */
 .intro-text {
+    position: relative; /* Ensure content is above the video */
+    z-index: 1;
     flex: 1.2; /* Flex-grow to occupy available space */
     display: flex; /* Flexbox layout */
     justify-content: center; /* Center horizontally */
     flex-direction: column; /* Vertical layout */
     padding: 20px; /* Padding for spacing */
+    align-items: center;
+    /* color: #ffff !important; */
+
+}
+.intro-text p{
+    color: #ffff !important;
+
 }
 
 /* Styling for the main heading */
 .heading {
     font-size: 62px; /* Large font size */
-    color: #002159; /* Dark blue color */
-    font-family: "Space Grotesk", sans-serif; /* Custom font */
+    /* color: #002159;  */
     font-weight: 600; /* Semi-bold */
     margin: 0; /* Remove default margin */
-    
+    color: #ffff !important;
+
 }
+
 @media (max-width: 768px) {
     .heading {
-      font-size: 40px;
+        font-size: 40px;
     }
 }
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
     .heading {
-      font-size: 32px;
+        font-size: 32px;
     }
 }
-
 
 /* Styling for the sub-heading */
 .sub-heading {
@@ -46,24 +70,31 @@
     font-size: 16px; /* Medium font size */
     margin-top: 10px; /* Space above the sub-heading */
     margin-bottom: 0; /* Remove default margin */
+    text-align: center;
 }
 
-.intro-btn button{
-   width: 16rem;
-   padding: 15px;
-   border-radius: 10px;
-   border: none;
-   background-color: #4787FA;
-   font-family: "Space Grotesk", sans-serif;
-   font-size: 16px;
-   color: #fff;
+.intro-btn button {
+    width: 16rem;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;;
+    border: none;
+    /* background-color: #4787FA; */
+    background-color: transparent;
+    background-image: linear-gradient(192deg, #FF87FA 17%, #AF3CFF 100%);
+    font-size: 16px;
+    color: #fff;
 }
-.intro-btn button:hover{
-    background-color: #002159;
-}
+
+/* .intro-btn button:hover {
+      background-image: none;
+      border:1px solid #FF87FA;
+  } */
 
 /* Container for the intro image */
 .intro-img {
+    position: relative; /* Ensure images are above the video */
+    z-index: 1;
     flex: 1; /* Flex-grow to occupy available space */
     display: flex; /* Flexbox layout */
     justify-content: center; /* Center horizontally */
@@ -71,7 +102,7 @@
     padding: 20px; /* Padding for spacing */
 }
 
-.intro-img img{
+.intro-img img {
     z-index: 999;
     height: 100%;
     width: 80%;
@@ -83,31 +114,28 @@
         flex-direction: column; /* Stack elements vertically */
         padding: 20px; /* Adjust padding for smaller screens */
         width: 100%;
-        padding:20px 0 0 0; /* Padding on the sides */
+        padding: 20px 0 0 0; /* Padding on the sides */
     }
-    .intro-text{
+
+    .intro-text {
         margin-top: 50px;
         align-items: center;
         justify-content: center;
         text-align: center;
     }
+
     .intro-text, .intro-img {
         width: 100%; /* Full width for each section */
         padding: 10px; /* Reduce padding for smaller screens */
     }
 }
 
-
-
-@media (max-width:1250px){
-   
-    .intro-img img{
+@media (max-width: 1250px) {
+    .intro-img img {
         height: 90%;
         width: 80%;
     }
 }
-
-
 
 .intro-img {
     position: relative;
@@ -167,8 +195,8 @@
     .overlay-images {
         top: 0; /* Adjust top position as necessary */
         column-gap: 1rem; /* Adjust gap between columns as necessary */
-        
     }
+
     .img-body.traffic, .img-body.statistic {
         margin-top: 0; /* Adjust top margin as necessary for small screens */
     }
@@ -179,29 +207,27 @@
         grid-column: 2;
         margin-top: 5rem; /* Adjust as necessary */
     }
-    
+
     .img-body.statistic {
-        
         margin-top: -4rem; /* Adjust as necessary */
     }
+
     .img-body {
         width: 160px;
         height: 160px;
     }
-
 }
-
 
 @media (max-width: 992px) {
     .img-body.traffic {
         grid-column: 3;
         margin-top: 10rem; /* Adjust as necessary */
     }
-    
+
     .img-body.statistic {
-        
         margin-top: 0; /* Adjust as necessary */
     }
+
     .img-body {
         width: 200px;
         height: 200px;
@@ -210,14 +236,13 @@
 
 @media (max-width: 570px) {
     .img-body.traffic {
-        
         margin-top: 5rem; /* Adjust as necessary */
     }
-    
+
     .img-body.statistic {
-        
         margin-top: -3rem; /* Adjust as necessary */
     }
+
     .img-body {
         width: 160px;
         height: 160px;
@@ -226,9 +251,9 @@
 
 @media (max-width: 570px) {
     .img-body.traffic {
-        
         margin-top: 3rem; /* Adjust as necessary */
     }
+
     .img-body {
         width: 140px;
         height: 140px;

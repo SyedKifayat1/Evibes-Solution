@@ -4,7 +4,7 @@ import HomeIntro from './home-intro'
 import HomeGrow from './home-grow'
 import HomeFeatures from './home-features'
 import HomeBoost from './home-boost'
-import HomeEmpower from './home-empower'
+// import HomeEmpower from './home-empower'
 import HomeTestimonials from './home-testimonial'
 import HomeCard from './home-card'
 
@@ -15,7 +15,7 @@ const Home = () => {
       <HomeGrow />
       <HomeFeatures />
       <HomeBoost />
-      <HomeEmpower/>
+      {/* <HomeEmpower/> */}
       <HomeTestimonials/>
       <HomeCard/>
     </div>

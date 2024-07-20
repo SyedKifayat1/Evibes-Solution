@@ -1,0 +1,19 @@
+h1 {
+    font-size: 48px !important;
+    font-weight: 700;
+    color: #002159;
+
+}
+@media (max-width: 768px) {
+    h1 {
+      font-size: 40px !important;
+    }
+
+
+}
+
+  @media (max-width: 480px) {
+     h1 {
+      font-size: 32px !important;
+    }
+}

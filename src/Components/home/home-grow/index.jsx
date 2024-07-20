@@ -32,26 +32,26 @@ const HomeGrow = () => {
             <div className='cards'>
                 <div className='card'>
                     <div className='card-icon'><i aria-hidden="true" class="fas fa-2x fa-tablet-alt"></i></div>
-                    <h1>Web Design</h1>
+                    <h3>Web Design</h3>
                     <p>Website is the digital face of your company. Let’s make it look awesome and user friendly</p>
                     <button className='learn-more-btn'>LEARN MORE</button>
                 </div>
                 <div className='card'>
                     <div className='card-icon'><i class="fa-solid fa-2x fa-code"></i>
                     </div>
-                    <h1>Web Development</h1>
+                    <h3>Web Development</h3>
                     <p>Seamless technology to help you build your website with responsiveness and user friendly design.</p>
                     <button className='learn-more-btn'>LEARN MORE</button>
                 </div>
                 <div className='card'>
                     <div className='card-icon'><i class="fa-solid fa-2x fa-bullhorn"></i></div>
-                    <h1>Digital Marketing</h1>
+                    <h3>Digital Marketing</h3>
                     <p>The effective digital marketing strategies that tap emotions and drive buying decisions.</p>
                     <button className='learn-more-btn'>LEARN MORE</button>
                 </div>
                 <div className='card'>
                     <div className='card-icon'><i class="fa-solid fa-2x fa-arrow-up-right-dots"></i></div>
-                    <h1>Brand Growth</h1>
+                    <h3>Brand Growth</h3>
                     <p>Let’s craft strategy that deeply resonates with your audience and boost you KPIs.</p>
                     <button className='learn-more-btn'>LEARN MORE</button>
                 </div>

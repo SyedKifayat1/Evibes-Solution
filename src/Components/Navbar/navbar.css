@@ -1,12 +1,15 @@
 .logo {
   width: 150px !important;
   height: 50px;
-
+  /* background-color: #fff; */
+  border-radius: 10px;
+  /* background-color: transparent;
+  background-image: linear-gradient(192deg, #FF87FA 17%, #AF3CFF 100%); */
 }
 
 
 .navbar {
-
+  font-family: "Space Grotesk", sans-serif;
   background-color: transparent;
   color: white;
   padding: 1rem 0;
@@ -16,6 +19,18 @@
   z-index: 4000;
   transition: top 0.3s;
 }
+
+.sticky{
+  background-color: #fff;
+}
+
+.navbar:hover{
+  background-color: #fff;
+}
+.navbar:hover .navbar-nav {
+  box-shadow: none !important;
+}
+
 
 .hidden {
   top: -100px;
@@ -30,6 +45,10 @@
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
   max-width: 800px;
+}
+
+.sticky .navbar-nav {
+  box-shadow: none !important;
 }
 
 .nav-item {
@@ -47,16 +66,21 @@
 }
 
 .btn {
-  width: 150px;
+  width: 180px;
   height: 50px;
-  background-color: #002159;
+  /* background-color: #002159; */
+  background-color: transparent;
+  background-image: linear-gradient(192deg, #FF87FA 17%, #AF3CFF 100%);
   color: #ffff;
   font-weight: 500;
 }
 
 .btn:hover {
-  background-color: #002159;
-  color: #fff;
+  /* background-color: #002159; */
+    background-image: none;
+    border:1px solid #FF87FA;
+    color: #FF87FA;
+  /* color: #fff; */
 }
 
 

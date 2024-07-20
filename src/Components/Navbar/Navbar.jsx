@@ -4,8 +4,9 @@ import Logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 import useScrollToTop from '../ScrollToTop';
 const Navbar = () => {
-  const [hidden, setHidden] = useState(false);
-  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [isSticky, setIsSticky] = useState(false);
+
+  
   useScrollToTop();
   useEffect(() => {
     const handleNavToggle = () => {
@@ -28,6 +29,8 @@ const Navbar = () => {
         document.body.classList.remove('no-scroll');
       }
     };
+
+    
 
     document.addEventListener('click', handleClickOutside);
 
@@ -59,28 +62,20 @@ const Navbar = () => {
     };
   }, []);
 
-  const handleScroll = () => {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (currentScroll > lastScrollTop) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-
-    setLastScrollTop(currentScroll <= 0 ? 0 : currentScroll);
-  };
-
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        setIsSticky(scrollTop > 0);
     };
-  }, [lastScrollTop]);
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
+  
 
   return (
-    <nav className={`navbar navbar-expand-lg ${hidden ? 'hidden' : ''}`}>
+    <nav className={`navbar navbar-expand-lg ${isSticky ? 'sticky' : ''}`}>
       <div className="container">
         <Link className="navbar-brand" to="/">
           <img className='logo' src={Logo} alt="Logo" />

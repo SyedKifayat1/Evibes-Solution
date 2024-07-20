@@ -9,7 +9,7 @@ const HomeBoost = () => {
   return (
     <section className="home-boost">
       <div className="home-boost-text">
-        <h1>Boost Traffic and Insights with Website Analytics</h1>
+        <h1>Unlock Website Growth with Powerful Analytics</h1>
         <p>Maximize your website’s potential and drive meaningful engagement with our targeted digital marketing strategies.</p>
         <p>We specialize in boosting your website traffic and employing sophisticated analytics to refine your marketing efforts and enhance user experience.</p>
         <button>Start Growing Today</button>

@@ -6,21 +6,21 @@ import ColorsImg from '../../assets/colors.png';
 const HomeFeatures = () => {
   return (
     <section className="home-features">
-      <h1>Further Services at Mostly Digital</h1>
+      <h1>More Ways Evibes Solutions Can Help You|</h1>
       <div className="features-cards">
         <div className="features-card">
           <div className="card-icon" style={{backgroundColor:'#D9FAFD'}}>
             <img src={ContentImg} alt="Content Writing" />
           </div>
           <h2>Content Writing</h2>
-          <p>Enhance your digital presence with our SEO-optimized content writing. Our experts craft engaging content that captivates and converts, tailoring every word to your brand’s unique story.</p>
+          <p>We write engaging, SEO-optimized content that tells your brand's story and drives results. Our expert writers craft compelling copy that captivates your audience and turns readers into customers.</p>
         </div>
         <div className="features-card">
           <div className="card-icon" style={{backgroundColor:'#E4E7FF'}}>
             <img src={ColorsImg} alt="Content Writing" />
           </div>
           <h2>Branding & Design</h2>
-          <p>Stand out with our distinctive branding and design services. Our team delivers creative solutions that ensure your brand makes a memorable impression, from logo creation to complete visual identity.</p>
+          <p>Our branding and design services create unique visual identities that capture your brand's essence and resonate with your audience. From logos to complete visual systems, we ensure your brand stands out and drives results.</p>
         </div>
         <div className="features-card">
           <div className="card-icon" style={{backgroundColor:'#FEE3E6'}}>

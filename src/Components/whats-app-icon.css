@@ -1,19 +1,9 @@
-/* .whatsapp-btn-container{
+  .whatsapp-btn-container {
     position: fixed;
     left: 20px;
-    bottom: 10px;
-    padding: 5px;
-    z-index: 2000;
-}
-.whatsapp-btn-container .whatsapp-btn{
-    font-size: 48px;
-    color: #25d366;
-}
- */
- .whatsapp-btn-container {
-    position: fixed;
-    left: 20px;
-    bottom: 15px;
+    bottom: 25px;
+    height: 37px; /* Increased height to accommodate padding and border-radius */
+    width: 37px;  /* Increased width to accommodate padding and border-radius */
     padding: 5px;
     z-index: 2000;
     display: flex;
@@ -21,17 +11,16 @@
     justify-content: center;
     cursor: pointer;
     animation: pulse 2s infinite;
+    background-color: #fff; /* Added background color */
+    border-radius: 5px; /* Made it circular */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added a subtle shadow */
   }
   
   .whatsapp-btn-container .whatsapp-btn {
-    font-size: 48px;
+    font-size: 45px;
     color: #25d366;
+    background-color: transparent; /* Removed background color */
     transition: transform 0.3s;
-  }
-  
-  .whatsapp-btn-container:hover .whatsapp-btn {
-    transform: scale(1.2);
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   }
   
   @keyframes pulse {

@@ -1,6 +1,6 @@
 @media (min-width:996px) {
     .home-grow {
-        padding: 4rem !important;
+        padding: 6rem !important;
     }
 
 }
@@ -154,11 +154,10 @@
     min-width: 300px;
 }
 
-.card {
+/* .card {
     background-color: #fff;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 10px;
-    /* box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1); */
     box-shadow: 0px 0px 10px 0px #DDDDDD;
     flex: 1;
     min-width: 300px;
@@ -177,16 +176,70 @@
     
 }
 
-/* .card:hover {
-    border: none;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
 
-} */
 
 
 .card-icon i {
     color: #002159;
     transition: all ease .5s;
+}
+
+.card-icon i:hover {
+    color: #002159;
+}
+
+.card h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #002159;
+}
+
+.card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.learn-more-btn {
+    position: absolute;
+    bottom: 10px;
+    padding: 0.75rem 1.5rem;
+    background-color: #fff !important;
+    color: #002159;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    width: 150px;
+    transition: all ease .5s;
+
+} */
+.card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #DDDDDD;
+    flex: 1;
+    min-width: 300px;
+    max-width: 100%;
+    min-height: 360px;
+    max-height: 450px;
+    transition: all ease 0.5s;
+    border: none;
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Arrange content vertically */
+    justify-content: space-between; /* Distribute space between content and button */
+    gap: 1rem;
+    position: relative; /* Required for absolute positioning of button */
+}
+
+.card:hover {
+    border: none;
+    box-shadow: 0px 0px 10px 2px #B03DFF;
+}
+
+.card-icon i {
+    color: #002159;
+    transition: all ease 0.5s;
 }
 
 .card-icon i:hover {
@@ -211,11 +264,12 @@
     border: 1px solid gainsboro;
     border-radius: 5px;
     cursor: pointer;
-    text-align: left;
+    text-align: center; /* Center text in the button */
     width: 150px;
-    transition: all ease .5s;
-
+    transition: all ease 0.5s;
+    margin-top: auto; /* Push button to the bottom */
 }
+
 
 .learn-more-btn:hover {
     /* background-color: #002159 !important; */

@@ -7,19 +7,19 @@ const HomeGrow = () => {
             <div className='grow-intro'>
                 <div>
                     <h1>We help you grow your business</h1>
-                    <p>Your presence on digital platforms to get more traffic, leads and sales for your company with our customised digital marketing solution.</p>
+                    <p>Boost visibility, leads, and revenue with our tailored digital strategy.</p>
                     <div className='features'>
                         <div className='feature'>
                             <span className='icon'><i className="fas fa-check"></i></span>
-                            <h3>We Build Innovative Websites</h3>
+                            <h3>Develop Creative Websites</h3>
                         </div>
                         <div className='feature'>
                             <span className='icon'><i className="fas fa-check"></i></span>
-                            <h3>Effective Digital Marketing</h3>
+                            <h3>Achieve Your Business Goals</h3>
                         </div>
                         <div className='feature'>
                             <span className='icon'><i className="fas fa-check"></i></span>
-                            <h3>We Drive Buying Decisions</h3>
+                            <h3>Powerful Digital Marketing</h3>
                         </div>
                         <div className='feature'>
                             <span className='icon'><i className="fas fa-check"></i></span>
@@ -33,20 +33,20 @@ const HomeGrow = () => {
                 <div className='card'>
                     <div className='card-icon'><i aria-hidden="true" class="fas fa-2x fa-tablet-alt"></i></div>
                     <h3>Web Design</h3>
-                    <p>Website is the digital face of your company. Let’s make it look awesome and user friendly</p>
+                    <p>Your website is your brand's first impression. Let's make it a memorable and impactful one.</p>
                     <button className='learn-more-btn'>LEARN MORE</button>
                 </div>
                 <div className='card'>
                     <div className='card-icon'><i class="fa-solid fa-2x fa-code"></i>
                     </div>
                     <h3>Web Development</h3>
-                    <p>Seamless technology to help you build your website with responsiveness and user friendly design.</p>
+                    <p>The initial digital impression of a business is vital, and we've mastered it with a SEAMLESS website.</p>
                     <button className='learn-more-btn'>LEARN MORE</button>
                 </div>
                 <div className='card'>
                     <div className='card-icon'><i class="fa-solid fa-2x fa-bullhorn"></i></div>
                     <h3>Digital Marketing</h3>
-                    <p>The effective digital marketing strategies that tap emotions and drive buying decisions.</p>
+                    <p>Our customized digital marketing tactics are designed to establish enduring connections with your target audience.</p>
                     <button className='learn-more-btn'>LEARN MORE</button>
                 </div>
                 <div className='card'>

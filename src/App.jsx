@@ -11,12 +11,14 @@ import UiUxService from './Components/services/ui-ux';
 import AboutUs from './Components/about-us';
 import ContactUs from './Components/contact-us';
 import Blogs from './Components/blogs';
+import WhatsAppIcon from './Components/whatsAppIcon';
 const NotFound = () => <h1 style={{textAlign:"center", padding:"4rem", color:"red"}}>404 - Not Found</h1>;
 function App() {
  
   return (
     <Router>
       <Navbar />
+      <WhatsAppIcon/>
       <Routes>
         <Route path="/" element={<Home className="for-top-margin" />} />
         <Route path="/seo-service" element={<SEOService />} />

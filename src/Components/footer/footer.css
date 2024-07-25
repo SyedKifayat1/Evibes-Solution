@@ -50,6 +50,10 @@
     margin-bottom: 8px;
     cursor: pointer;
   }
+
+  .footer-list i{
+    margin-right: .8rem;
+  }
   
   .social-icons {
     display: flex;

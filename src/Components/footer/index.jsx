@@ -35,8 +35,8 @@ const Footer = () => {
         <div className="footer-section">
           <h2 className="footer-heading">Get in touch</h2>
           <ul className="footer-list">
-            <li>+92 326 9411582</li>
-            <li>info@evibessolutions.com</li>
+            <li><a href="tel:+923269411582"><i class="fa-solid fa-phone"></i><span>+92 326 9411582</span></a></li>
+            <li><a href="mailto:info@evibessolutions.com"><i class="fa-regular fa-envelope"></i><span>info@evibessolutions.com</span></a></li>
             <hr />
             <li>Lahore, Pakistan</li>
           </ul>

@@ -1,6 +1,6 @@
 .footer {
-    background-color: #fff;
-    color: #002159;
+    background-color: #00001B;
+    color: #fff;
     padding: 40px 20px;
     margin-top: 4rem;
 
@@ -14,10 +14,20 @@
     margin: 0 auto;
     margin-bottom: 4rem;
   }
+
+  .footer-logo{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+  }
   
   .footer-logo img {
-    width: 150px; /* Adjust as necessary */
-    height: 100px;
+    margin-top: 1.2rem;
+    width: 180px; /* Adjust as necessary */
+    height: 80px;
+    border-radius: 10px;
+    background:linear-gradient(192deg, #FF87FA 17%, #AF3CFF 100%) !important;
   }
   
   .footer-section {
@@ -26,7 +36,7 @@
   }
   
   .footer-heading {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
   }
@@ -63,7 +73,7 @@
     height: 36px;
     width: 36px;
     border-radius: 5px;
-    color: #002159;
+    color: #ffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,6 +99,42 @@
   }
   
   .link{
-    color:#002159;
+    color:#ffff;
     text-decoration: none;
+  }
+
+  .newsletter-btn{
+    min-width: 280px;
+    height: 50px;
+    background-color: #fff;
+    border: none;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .newsletter-btn input{
+    
+    height: 100%;
+    width: 70%;
+    border: none;
+    border-radius:10px 0 0 10px !important;
+    padding: 15px !important;
+    outline: none; 
+
+  }
+  .newsletter-btn input:focus{
+    border: none;
+    outline: none; 
+  }
+  
+
+  .newsletter-btn button{
+      height: 100%;
+      width: 30%;
+      border: none;
+      border-radius:0 10px 10px 0 !important;
+      background: linear-gradient(192deg, #FF87FA 17%, #AF3CFF 100%) !important;
+      color: #fff;
   }

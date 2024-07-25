@@ -10,22 +10,17 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-section footer-logo">
           <Link className="link" to="/"><img src={Logo} alt="Company Logo" /></Link>
+          <p>Shaping technology for the future</p>
+          <div className="social-icons">
+            <div className='icon-box'> <i className="fab fa-facebook-f"></i></div>
+            <div className='icon-box'> <i className="fab fa-twitter"></i></div>
+            <div className='icon-box'> <i className="fab fa-instagram"></i></div>
+            <div className='icon-box'>  <i className="fab fa-linkedin-in"></i></div>
+          </div>
         </div>
+        
         <div className="footer-section">
-          <h1 className="footer-heading">Company</h1>
-          <ul className="footer-list">
-            <li><Link className="link" to="/">Home</Link> </li>
-            <li><Link className="link" to="/about-us">About us</Link></li>
-            <li><Link className="link" to="/web-dev">Web Development</Link></li>
-            <li><Link className="link" to="/ui-ux">Ui & Ux</Link></li>
-            <li><Link className="link" to="/digital-marketing">Digital Marketing</Link></li>
-            <li><Link className="link" to="/seo-service">Search Engine Optimization</Link></li>
-            <li><Link className="link" to="/contact-us">Contact Us</Link></li>
-            <li><Link className="link" to="/blogs">Blogs</Link></li>
-          </ul>
-        </div>
-        <div className="footer-section">
-          <h1 className="footer-heading">Services</h1>
+          <h2 className="footer-heading">Services</h2>
           <ul className="footer-list">
             <li><Link className="link" to="/web-dev">Web Development</Link></li>
             <li><Link className="link" to="/ui-ux">Ui & Ux</Link></li>
@@ -38,14 +33,21 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-section">
-          <h1 className="footer-heading">Follow Us</h1>
-          <div className="social-icons">
-
-            <div className='icon-box'> <i className="fab fa-facebook-f"></i></div>
-            <div className='icon-box'> <i className="fab fa-twitter"></i></div>
-            <div className='icon-box'> <i className="fab fa-instagram"></i></div>
-            <div className='icon-box'>  <i className="fab fa-linkedin-in"></i></div>
+          <h2 className="footer-heading">Get in touch</h2>
+          <ul className="footer-list">
+            <li>+92 326 9411582</li>
+            <li>info@evibessolutions.com</li>
+            <hr />
+            <li>Lahore, Pakistan</li>
+          </ul>
+        </div>
+        <div className="footer-section">
+          <h2 className="footer-heading">Join Our Newsletter</h2>
+          <div className='newsletter-btn'>
+            <input type="email" placeholder='Email'/>
+            <button>Submit</button>
           </div>
+          
         </div>
       </div>
       <hr />
@@ -57,3 +59,6 @@ const Footer = () => {
 }
 
 export default Footer
+
+
+

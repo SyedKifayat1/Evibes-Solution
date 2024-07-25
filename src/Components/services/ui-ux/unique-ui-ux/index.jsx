@@ -29,8 +29,8 @@
 //     <section className="unique-ui-ux">
 //       <div className="unique-ui-ux-content">
 //         <h4>Your Unique UI/UX Design Partner</h4>
-//         <h1>Why Choose Mostly Digital for Your UI/UX Design Needs?</h1>
-//         <p>If you want to stand out in the highly competitive digital landscape, exceptional UI/UX design is a must. That’s where Mostly Digital comes in. With our experienced team of designers, we create engaging and intuitive design solutions tailored to your unique business needs. We keep your users in mind every step of the way, ensuring a seamless user experience that keeps them coming back for more.</p>
+//         <h1>Why Choose Evibes Solutions for Your UI/UX Design Needs?</h1>
+//         <p>If you want to stand out in the highly competitive digital landscape, exceptional UI/UX design is a must. That’s where Evibes Solutions comes in. With our experienced team of designers, we create engaging and intuitive design solutions tailored to your unique business needs. We keep your users in mind every step of the way, ensuring a seamless user experience that keeps them coming back for more.</p>
 //         <button className="unique-ui-ux-button">See Our Work</button>
 //       </div>
 //       <div className="unique-ui-ux-image-container">
@@ -96,8 +96,8 @@ const UniqueUiUx = () => {
     <section className="unique-ui-ux">
       <div className="unique-ui-ux-content">
         <h4>Your Unique UI/UX Design Partner</h4>
-        <h1>Why Choose Mostly Digital for Your UI/UX Design Needs?</h1>
-        <p>If you want to stand out in the highly competitive digital landscape, exceptional UI/UX design is a must. That’s where Mostly Digital comes in. With our experienced team of designers, we create engaging and intuitive design solutions tailored to your unique business needs. We keep your users in mind every step of the way, ensuring a seamless user experience that keeps them coming back for more.</p>
+        <h1>Why Choose Evibes Solutions for Your UI/UX Design Needs?</h1>
+        <p>If you want to stand out in the highly competitive digital landscape, exceptional UI/UX design is a must. That’s where Evibes Solutions comes in. With our experienced team of designers, we create engaging and intuitive design solutions tailored to your unique business needs. We keep your users in mind every step of the way, ensuring a seamless user experience that keeps them coming back for more.</p>
         <button className="unique-ui-ux-button">See Our Work</button>
       </div>
       <div className="unique-ui-ux-image-container">

@@ -7,11 +7,11 @@ const DigitalMarketingBoost = () => {
       <div className="digital-marketing-content">
         <h4>Elevate Your Brand</h4>
         <h1>Elevate Your Digital Presence</h1>
-        <p>At Mostly Digital, we specialize in creating user-friendly websites tailored to meet your needs. Our team of experienced developers and designers work collaboratively to craft websites that not only look amazing but also deliver exceptional performance.</p>
+        <p>Evibes Solutions helps you unlock the power of digital marketing to reach your target audience, build brand awareness, and drive results. We develop data-driven strategies, create engaging content, and leverage the latest technologies to ensure your campaigns are effective and impactful. Let us help you achieve your online goals and grow your business.</p>
         <ul>
-          <li>Innovative techniques to stay ahead</li>
-          <li>Tailored solutions for your business needs</li>
-          <li>Proven strategies for maximum impact</li>
+          <li>We provide Strategic Planning</li>
+          <li>Data-Driven Optimization</li>
+          <li>Engaging Audience</li>
         </ul>
         <button className="digital-marketing-button">Unock Your Digital Potential</button>
       </div>

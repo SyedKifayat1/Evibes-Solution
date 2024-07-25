@@ -14,7 +14,7 @@ const AboutExperience = () => {
                 <div className='about-experience-content'>
                     <h4>INDUSTRY EXPERIENCES</h4>
                     <h1>Digital solutions for your online business.</h1>
-                    <p>Mostly Digital is dedicated to delivering comprehensive digital solutions that support your business’s growth.</p>
+                    <p>Evibes Solutions is dedicated to delivering comprehensive digital solutions that support your business’s growth.</p>
                 </div>
                 <div className='about-experience-drop-downs'>
                     {dropDownData.map((item, index) => (

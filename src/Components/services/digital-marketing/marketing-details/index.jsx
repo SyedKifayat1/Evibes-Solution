@@ -6,21 +6,18 @@ const MarketingDetails = () => {
         {
             id: 'social-media',
             h1: "Social Media Marketing",
-            p: `Social media is a powerful tool that helps you build connections and brand awareness.
-                We help you manage your profiles, create engaging content, and interact with your
-                followers to strengthen your online community. Our team of experts will make sure
-                your brand stays active and connected.`,
-            li1: `Social Media Management - We'll manage your social profiles, create engaging content, and foster interactions with your followers to strengthen your online community.`,
-            li2: `Audience Tracking and Engagement - We'll help you track your targeted audience and build two-way connections with your audience.`,
-            li3: `Content Strategy and Creation - We'll tailor your social media content, track and connect with your audience to build two-way relationships with your targeted audience.`
+            p: `Social media is a powerful tool for building connections and brand awareness. Evibes Solutions helps you manage your profiles, create engaging content, and interact with your followers to strengthen your online community. Our team of experts will ensure your brand stays active and connected.`,
+            li1: `Social Media Management - We'll manage your social profiles, create engaging content, and build a strong online community, driving engagement and achieving your business goals.`,
+            li2: `Audience Tracking and Engagement - We'll help you track your audience, understand their needs, and build two-way connections, fostering a loyal and engaged following.`,
+            li3: `Content Strategy and Creation - We'll tailor your content, track its performance, and connect with your audience in meaningful ways, ensuring your social media efforts are always evolving to maximize impact and deliver a strong return on investment.`
         },
         {
             id: 'google-ads',
             h1: "Google Ads & PPC",
-            p: `Google Ads is a digital advertising platform that helps businesses grow by reaching potential customers and driving sales. With Google Ads, you can create targeted ads that appear on Google search results, YouTube, Gmail, and other Google properties. This allows you to effectively promote your business, products, or services to the right audience at the right time.`,
-            li1: `Dedicated Account Management: You'll have a team of Google Ads specialists dedicated to your account, ensuring personalized attention and optimal performance.`,
-            li2: `Proven Track Record - We have a proven track record of delivering successful Google Ads campaigns for businesses across various industries.`,
-            li3: `Ongoing Optimization - We continuously monitor and optimize your campaigns to ensure you're getting the best return on your advertising investment.`
+            p: `Through its ability to connect with new clients and increase sales, Google Ads is a digital advertising platform that supports business development. You can make targeted advertising using Google advertising that show up on YouTube, Gmail, Google search results, and other Google sites.`,
+            li1: `Dedicated Google Ads Experts: Our team will provide personalized attention to your account, ensuring optimal performance.`,
+            li2: `Proven Success: We have a proven track record of delivering successful Google Ads campaigns.`,
+            li3: `Continuous Optimization: We constantly monitor and optimize your campaigns for maximum return on investment.`
         },
         {
             id: 'brand-growth',

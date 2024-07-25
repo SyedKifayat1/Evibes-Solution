@@ -9,7 +9,7 @@ const DigitalMarketingStand = () => {
         <section className="digital-marketing-stand">
             <div className="digital-marketing-stand-header">
                 <h4>Stand Out</h4>
-                <h1>Maximize Your Online Presence with Mostly Digital</h1>
+                <h1>Experience the Digital Advantage with Evibes Services</h1>
             </div>
             <div className='digital-marketing-stand-cards'>
                 <div className="digital-marketing-stand-card">

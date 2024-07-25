@@ -6,8 +6,8 @@ const UiUxBoost = () => {
     <section className="ui-ux-boost">
       <div className="ui-ux-content">
         <h4>Intuitive UI/UX Design</h4>
-        <h1>Elevate Your User Experience with Mostly Digital</h1>
-        <p>At Mostly Digital, we specialize in UI/UX design services. We aim to create user-friendly digital experiences that stand out. Furthermore, we focus on combining creativity with thorough research to ensure every interface we design is intuitive and engaging.</p>
+        <h1>Elevate Your User Experience with Evibes Solutions</h1>
+        <p>At Evibes Solutions, we specialize in UI/UX design services. We aim to create user-friendly digital experiences that stand out. Furthermore, we focus on combining creativity with thorough research to ensure every interface we design is intuitive and engaging.</p>
         <ul>
           <li>User-Friendly Experiences</li>
           <li>Creative and Research-Driven Approach</li>

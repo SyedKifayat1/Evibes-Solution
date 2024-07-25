@@ -8,7 +8,7 @@ const SEOBoost = () => {
       <div className="seo-content">
         <h4>Your SEO Partner</h4>
         <h1>Boost Your Online Presence</h1>
-        <p>At Mostly Digital, we understand the importance of search engine optimization for businesses in today’s digital age. Our team of SEO experts stays up to date with the latest trends and techniques to provide you with the best results. Here’s why you should choose us for your SEO needs:</p>
+        <p>At Evibes Solutions, we understand the importance of search engine optimization for businesses in today’s digital age. Our team of SEO experts stays up to date with the latest trends and techniques to provide you with the best results. Here’s why you should choose us for your SEO needs:</p>
         <ul>
           <li>Proven Results for Businesses of All Sizes</li>
           <li>Timely Results to Meet Your Business Goals</li>

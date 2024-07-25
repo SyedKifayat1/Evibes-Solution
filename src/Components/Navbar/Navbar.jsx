@@ -106,7 +106,7 @@ const Navbar = () => {
               <Link className="nav-link close-drop-down" to="/contact-us">Contact</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link close-drop-down" to="/blogs">Blog</Link>
+              {/* <Link className="nav-link close-drop-down" to="/blogs">Blog</Link> */}
             </li>
           </ul>
           <button className="btn" type="submit">Get a Quote</button>

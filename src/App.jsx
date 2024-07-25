@@ -27,8 +27,7 @@ function App() {
         <Route path="/ui-ux" element={<UiUxService />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/blogs" element={<Blogs />} />
-        {/* Add more routes as needed */}
+        {/* <Route path="/blogs" element={<Blogs />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

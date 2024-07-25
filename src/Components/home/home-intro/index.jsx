@@ -14,7 +14,7 @@
 //                 </div>
 //                 <div className='intro-btn'><button>Shedule free 30 min call</button></div>
 //             </div>
-            
+
 //             <div className='intro-img'>
 //                 <img src={HeroImg} alt="hero img" className="main-img" />
 //                 <div className="overlay-images">
@@ -54,9 +54,13 @@ const HomeIntro = () => {
                     <p>By leveraging the most of digital landscape</p>
                     <p>Your digital consultant awaits!</p>
                 </div>
-                <div className='intro-btn'><button>Schedule free 30 min call</button></div>
+                <div className='intro-btn'>
+                    <a className='whatsapp-btn' target='_blank' href="http://wa.me/923269411582">
+                        <button>Schedule free 30 min call</button>
+                    </a>
+                </div>
             </div>
-            
+
             {/* <div className='intro-img'>
                 <img src={HeroImg} alt="hero img" className="main-img" />
                 <div className="overlay-images">

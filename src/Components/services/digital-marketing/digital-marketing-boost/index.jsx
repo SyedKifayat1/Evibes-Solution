@@ -7,7 +7,7 @@ const DigitalMarketingBoost = () => {
       <div className="digital-marketing-content">
         <h4>Elevate Your Brand</h4>
         <h1>Elevate Your Digital Presence</h1>
-        <p>Evibes Solutions helps you unlock the power of digital marketing to reach your target audience, build brand awareness, and drive results. We develop data-driven strategies, create engaging content, and leverage the latest technologies to ensure your campaigns are effective and impactful. Let us help you achieve your online goals and grow your business.</p>
+        <p>Evibes Development helps you unlock the power of digital marketing to reach your target audience, build brand awareness, and drive results. We develop data-driven strategies, create engaging content, and leverage the latest technologies to ensure your campaigns are effective and impactful. Let us help you achieve your online goals and grow your business.</p>
         <ul>
           <li>We provide Strategic Planning</li>
           <li>Data-Driven Optimization</li>

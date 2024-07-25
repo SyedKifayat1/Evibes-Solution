@@ -12,10 +12,10 @@ const Footer = () => {
           <Link className="link" to="/"><img src={Logo} alt="Company Logo" /></Link>
           <p>Shaping technology for the future</p>
           <div className="social-icons">
-            <div className='icon-box'> <i className="fab fa-facebook-f"></i></div>
-            <div className='icon-box'> <i className="fab fa-twitter"></i></div>
-            <div className='icon-box'> <i className="fab fa-instagram"></i></div>
-            <div className='icon-box'>  <i className="fab fa-linkedin-in"></i></div>
+            <div className='icon-box'><a href="" style={{textDecoration:"none", color:'#fff'}}> <i className="fab fa-facebook-f"></i></a></div>
+            <div className='icon-box'> <a href="" style={{textDecoration:"none", color:'#fff'}}><i className="fab fa-twitter"></i></a></div>
+            <div className='icon-box'> <a href="" style={{textDecoration:"none", color:'#fff'}}><i className="fab fa-instagram"></i></a></div>
+            <div className='icon-box'> <a href="" style={{textDecoration:"none", color:'#fff'}}> <i className="fab fa-linkedin-in"></i></a></div>
           </div>
         </div>
         
@@ -36,7 +36,7 @@ const Footer = () => {
           <h2 className="footer-heading">Get in touch</h2>
           <ul className="footer-list">
             <li><a href="tel:+923269411582"><i class="fa-solid fa-phone"></i><span>+92 326 9411582</span></a></li>
-            <li><a href="mailto:info@evibessolutions.com"><i class="fa-regular fa-envelope"></i><span>info@evibessolutions.com</span></a></li>
+            <li><a href="mailto:info@evibesdevelopment.com"><i class="fa-regular fa-envelope"></i><span>info@evibesdevelopment.com</span></a></li>
             <hr />
             <li>Lahore, Pakistan</li>
           </ul>

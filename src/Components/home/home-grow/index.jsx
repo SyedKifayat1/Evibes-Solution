@@ -8,25 +8,6 @@ const HomeGrow = () => {
                 <div>
                     <h1>We help you grow your business</h1>
                     <p>Boost visibility, leads, and revenue with our tailored digital strategy.</p>
-                    {/* <div className='features'>
-                        <div className='feature'>
-                            <span className='icon'><i className="fas fa-check"></i></span>
-                            <h3>Develop Creative Websites</h3>
-                        </div>
-                        <div className='feature'>
-                            <span className='icon'><i className="fas fa-check"></i></span>
-                            <h3>Achieve Your Business Goals</h3>
-                        </div>
-                        <div className='feature'>
-                            <span className='icon'><i className="fas fa-check"></i></span>
-                            <h3>Powerful Digital Marketing</h3>
-                        </div>
-                        <div className='feature'>
-                            <span className='icon'><i className="fas fa-check"></i></span>
-                            <h3>Fulfill Your Business Objectives</h3>
-                        </div>
-                    </div>
-                    <button className='get-started-btn'>Get Started</button> */}
                 </div>
             </div>
             <div className='cards'>

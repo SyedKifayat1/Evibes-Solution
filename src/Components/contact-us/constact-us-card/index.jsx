@@ -12,22 +12,25 @@ const ContactUsCard = () => {
                 <div>
                     <ul>
                         <li>
-                            <div className="contact-info-icon call-icon">
-                                {/* <i className="fa-solid phone-volume"></i> */}
-                                <i class="fa-solid fa-phone-volume"></i>
-                            </div>
-                            <p>+92 3118120088</p>
+                            <a href="tel:+923269411582">
+                                <div className="contact-info-icon call-icon">
+                                    <i class="fa-solid fa-phone-volume"></i>
+                                </div>
+                                <p>+923269411582</p>
+                            </a>
                         </li>
                         <li>
-                            <div className="contact-info-icon mail-icon">
-                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@evibesdevelopment.com">
+                                <div className="contact-info-icon mail-icon">
+                                    <i class="fa-solid fa-envelope"></i>
 
-                            </div>
-                            <p>info@syedkifayat.online</p>
+                                </div>
+                                <p>info@evibesdevelopment.com</p>
+                            </a>
                         </li>
                         <li>
                             <div className="contact-info-icon location-icon">
-                            <i class="fa-solid fa-location-dot"></i>
+                                <i class="fa-solid fa-location-dot"></i>
 
                             </div>
                             <p>Lahore, Pakistan</p>

@@ -8,7 +8,7 @@ const CustomWeb = () => {
         <h4>Custom Websites Design & Development</h4>
         <h1>Custom Websites Built To Convert</h1>
         <p>
-          At Evibes Solutions, we work closely with you to understand your unique needs and build websites that are tailored to your specific goals. Our team of experienced developers and designers collaborate to create websites that are both visually stunning and deliver exceptional performance.
+          At Evibes Development, we work closely with you to understand your unique needs and build websites that are tailored to your specific goals. Our team of experienced developers and designers collaborate to create websites that are both visually stunning and deliver exceptional performance.
         </p>
         <ul>
           <li>Customized Solutions</li>

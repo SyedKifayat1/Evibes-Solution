@@ -6,7 +6,7 @@ import ColorsImg from '../../assets/colors.png';
 const HomeFeatures = () => {
   return (
     <section className="home-features">
-      <h1>More Ways Evibes Solutions Can Help You|</h1>
+      <h1>More Ways Evibes Development Can Help You|</h1>
       <div className="features-cards">
         <div className="features-card">
           <div className="card-icon" style={{backgroundColor:'#D9FAFD'}}>

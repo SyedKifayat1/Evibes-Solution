@@ -16,7 +16,7 @@ const HomeTestimonials = () => {
                         <div className="avatar-icon"><i class="fa-solid fa-quote-right"></i></div>
                     </div>
                     <div className='testimonials-card-content'>
-                        <p className="testimonial-text">Evibes Solutions created a website that exceeded our expectations. We're seeing great results and highly recommend their services!</p>
+                        <p className="testimonial-text">Evibes Development created a website that exceeded our expectations. We're seeing great results and highly recommend their services!</p>
                         <div className="small-line"></div>
                         <div className="avatar-name">Angela Taylor</div>
                         <div className="avatar-status">Marketing Manager</div>
@@ -28,7 +28,7 @@ const HomeTestimonials = () => {
                         <div className="avatar-icon"><i class="fa-solid fa-quote-right"></i></div>
                     </div>
                     <div className='testimonials-card-content'>
-                        <p className="testimonial-text">Great experience working with Evibes Solutions. They delivered a website that's beautiful, user-friendly, and drives traffic.</p>
+                        <p className="testimonial-text">Great experience working with Evibes Development. They delivered a website that's beautiful, user-friendly, and drives traffic.</p>
                         <div className="small-line"></div>
                         <div className="avatar-name">Chris Harsh</div>
                         <div className="avatar-status">Marketing Manager</div>
@@ -40,7 +40,7 @@ const HomeTestimonials = () => {
                         <div className="avatar-icon"><i class="fa-solid fa-quote-right"></i></div>
                     </div>
                     <div className='testimonials-card-content'>
-                        <p className="testimonial-text">Evibes solutions helped us create engaging content that's boosted our website traffic and brand awareness. We're very happy with their work!</p>
+                        <p className="testimonial-text">Evibes Development helped us create engaging content that's boosted our website traffic and brand awareness. We're very happy with their work!</p>
                         <div className="small-line"></div>
                         <div className="avatar-name">Mike Taylor</div>
                         <div className="avatar-status">Marketing Manager</div>

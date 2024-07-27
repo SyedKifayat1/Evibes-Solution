@@ -1,8 +1,6 @@
 .logo {
-  width: 160px !important;
-  height: 60px;
-  border-radius: 10px;
-  transform: scale(1.2);
+  width: 180px; /* Adjust as necessary */
+  height: 80px;
 }
 
 

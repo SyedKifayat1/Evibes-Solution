@@ -9,12 +9,12 @@ const HomeBoost = () => {
   return (
     <section className="home-boost">
       <div className="home-boost-text">
-        <h1>Unlock Website Growth with Powerful Analytics</h1>
-        <p>Maximize your website’s potential and drive meaningful engagement with our targeted digital marketing strategies.</p>
-        <p>We specialize in boosting your website traffic and employing sophisticated analytics to refine your marketing efforts and enhance user experience.</p>
-        <button>Start Growing Today</button>
+        <h1 data-aos="fade-right" >Unlock Website Growth with Powerful Analytics</h1>
+        <p data-aos="fade-up" data-aos-delay='200'>Maximize your website’s potential and drive meaningful engagement with our targeted digital marketing strategies.</p>
+        <p data-aos="fade-up" data-aos-delay='200'>We specialize in boosting your website traffic and employing sophisticated analytics to refine your marketing efforts and enhance user experience.</p>
+        <button data-aos="fade-up" data-aos-delay='200'>Start Growing Today</button>
       </div>
-      <div className="home-boost-images">
+      <div className="home-boost-images" data-aos="fade-left" data-aos-delay='200'>
         <img src={SeoImg} alt="seo analyze img" className="analyze-img" />
         <div className="side-images">
           <div className="side-image visitor">

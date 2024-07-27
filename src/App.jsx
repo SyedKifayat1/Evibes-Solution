@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './app.css'
 import Navbar from './Components/Navbar/Navbar';
@@ -12,8 +12,23 @@ import AboutUs from './Components/about-us';
 import ContactUs from './Components/contact-us';
 // import Blogs from './Components/blogs';
 import WhatsAppIcon from './Components/whatsAppIcon';
+
+import Aos from 'aos';
+import "aos/dist/aos.css"
+
+
+
+
 const NotFound = () => <h1 style={{textAlign:"center", padding:"4rem", color:"red"}}>404 - Not Found</h1>;
+
 function App() {
+
+  useEffect(()=>{
+    Aos.init({
+      duration:500,
+      easing:'ease-in-sine',
+    })
+  },[])
  
   return (
     <Router>

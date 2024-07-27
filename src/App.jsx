@@ -10,7 +10,7 @@ import DigitalMarketing from './Components/services/digital-marketing';
 import UiUxService from './Components/services/ui-ux';
 import AboutUs from './Components/about-us';
 import ContactUs from './Components/contact-us';
-import Blogs from './Components/blogs';
+// import Blogs from './Components/blogs';
 import WhatsAppIcon from './Components/whatsAppIcon';
 const NotFound = () => <h1 style={{textAlign:"center", padding:"4rem", color:"red"}}>404 - Not Found</h1>;
 function App() {

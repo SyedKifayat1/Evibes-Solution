@@ -26,8 +26,8 @@
     margin-top: 1.2rem;
     width: 180px; /* Adjust as necessary */
     height: 80px;
-    border-radius: 10px;
-    background:linear-gradient(192deg, #FF87FA 17%, #AF3CFF 100%) !important;
+    /* border-radius: 10px; */
+    /* background:linear-gradient(192deg, #FF87FA 17%, #AF3CFF 100%) !important; */
   }
   
   .footer-section {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './navbar.css';
-import Logo from '../assets/logo.png';
+import Logo from '../assets/logo2.png';
 import { Link } from 'react-router-dom';
 import useScrollToTop from '../ScrollToTop';
 const Navbar = () => {

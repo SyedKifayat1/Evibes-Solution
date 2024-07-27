@@ -1,6 +1,6 @@
 import React from 'react'
 import './footer.css'
-import Logo from '../assets/logo.png'
+import Logo from '../assets/logo2.png'
 import { Link } from 'react-router-dom'
 import useScrollToTop from '../ScrollToTop'
 const Footer = () => {

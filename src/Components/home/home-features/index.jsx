@@ -22,7 +22,7 @@ const HomeFeatures = () => {
           <h2>Branding & Design</h2>
           <p>Our branding and design services create unique visual identities that capture your brand's essence and resonate with your audience. From logos to complete visual systems, we ensure your brand stands out and drives results.</p>
         </div>
-        <div className="features-card" data-aos="fade-left" data-aos-delay='200'>
+        <div className="features-card" data-aos="fade-up" data-aos-delay='200'>
           <div className="card-icon" style={{backgroundColor:'#FEE3E6'}}>
             <img src={MarketingImg} alt="Content Writing" />
           </div>

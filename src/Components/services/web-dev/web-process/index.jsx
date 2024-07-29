@@ -29,7 +29,7 @@ const WebProcess = () => {
     ];
   return (
     <div className='web-process'>
-    <h1>Our Development Process</h1>
+    <h1 data-aos="fade-right">Our Development Process</h1>
     <div className="accordion">
         <div className="accordion-titles">
             {items.map((item, index) => (
@@ -38,11 +38,12 @@ const WebProcess = () => {
                     key={index}
                     className={`accordion-title ${openIndex === index ? 'open' : ''}`}
                     onClick={() => toggleAccordion(index)}
+                    data-aos="fade-right"
                 >
                     {item.title}
                 </div>
                 {isSmallScreen && openIndex === index && (
-                    <div className="accordion-content">
+                    <div className="accordion-content" data-aos="fade-up">
                         <h3>{items[openIndex].title}</h3>
                         <p>{item.content}</p>
                     </div>
@@ -51,7 +52,7 @@ const WebProcess = () => {
             ))}
         </div>
         {!isSmallScreen && openIndex !== null && (
-            <div className="accordion-content">
+            <div className="accordion-content" data-aos="fade-up">
                 <h3>{items[openIndex].title}</h3>
                 <p>{items[openIndex].content}</p>
             </div>

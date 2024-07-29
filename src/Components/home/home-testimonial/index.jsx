@@ -34,7 +34,7 @@ const HomeTestimonials = () => {
                         <div className="avatar-status">Marketing Manager</div>
                     </div>
                 </div>
-                <div className="testimonials-card" data-aos="fade-left" data-aos-delay='200'>
+                <div className="testimonials-card" data-aos="fade-up" data-aos-delay='200'>
                     <div className="card-header">
                         <div className="card-avatar"><img src={TestimonialThird} alt="Testimonial" /></div>
                         <div className="avatar-icon"><i class="fa-solid fa-quote-right"></i></div>

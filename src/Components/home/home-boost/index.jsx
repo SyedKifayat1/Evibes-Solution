@@ -14,7 +14,7 @@ const HomeBoost = () => {
         <p data-aos="fade-up" data-aos-delay='200'>We specialize in boosting your website traffic and employing sophisticated analytics to refine your marketing efforts and enhance user experience.</p>
         <button data-aos="fade-up" data-aos-delay='200'>Start Growing Today</button>
       </div>
-      <div className="home-boost-images" data-aos="fade-left" data-aos-delay='200'>
+      <div className="home-boost-images" data-aos="fade-up" data-aos-delay='200'>
         <img src={SeoImg} alt="seo analyze img" className="analyze-img" />
         <div className="side-images">
           <div className="side-image visitor">

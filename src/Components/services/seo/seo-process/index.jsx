@@ -31,7 +31,7 @@ const SEOProcess = () => {
 
     return (
         <div className='seo-process'>
-            <h1 data-aos="fade-right" data-aos-delay='200'>Our SEO Process</h1>
+            <h1 data-aos="fade-right" >Our SEO Process</h1>
             <div className="accordion">
                 <div className="accordion-titles">
                     {items.map((item, index) => (
@@ -40,12 +40,12 @@ const SEOProcess = () => {
                             key={index}
                             className={`accordion-title ${openIndex === index ? 'open' : ''}`}
                             onClick={() => toggleAccordion(index)}
-                            data-aos="fade-up" data-aos-delay='200'
+                            data-aos="fade-right" 
                         >
                             {item.title}
                         </div>
                         {isSmallScreen && openIndex === index && (
-                            <div className="accordion-content" data-aos="fade-right" data-aos-delay='200'>
+                            <div className="accordion-content" data-aos="fade-up" >
                                 <h3>{items[openIndex].title}</h3>
                                 <p>{item.content}</p>
                             </div>
@@ -54,7 +54,7 @@ const SEOProcess = () => {
                     ))}
                 </div>
                 {!isSmallScreen && openIndex !== null && (
-                    <div className="accordion-content" data-aos="fade-right" data-aos-delay='200'>
+                    <div className="accordion-content" data-aos="fade-up" >
                         <h3>{items[openIndex].title}</h3>
                         <p>{items[openIndex].content}</p>
                     </div>

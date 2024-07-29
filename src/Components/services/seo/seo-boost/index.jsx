@@ -16,7 +16,7 @@ const SEOBoost = () => {
         </ul>
         <button className="seo-button" data-aos="fade-up" data-aos-delay='200'>Get Your Free SEO Audit Today</button>
       </div>
-      <div className="seo-image" data-aos="fade-left">
+      <div className="seo-image" data-aos="fade-up">
         <img src={SEOBoostImg} alt="SEO Boost" />
       </div>
     </section>

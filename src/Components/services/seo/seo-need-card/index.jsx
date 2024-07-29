@@ -21,10 +21,10 @@ const SEONeedCard = () => {
 
     ];
     return (
-        <section className="seo-need-section" data-aos="fade-right" data-aos-delay='200'>
+        <section className="seo-need-section" >
             <div className="seo-need-cards">
                 {cards.map((card, index) => (
-                    <div className="seo-need-card" key={index}>
+                    <div className="seo-need-card" key={index} data-aos="fade-right">
                         <div className="seo-need-card-img">
                             <img src={card.Img} alt={card.title} />
                         </div>

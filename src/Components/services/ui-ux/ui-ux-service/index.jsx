@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import './ui-ux-service.css';
 import BasicImg from '../../../assets/audit.png';
 import WireframImg from '../../../assets/prototype.png';
@@ -43,13 +43,13 @@ const UiUxService = () => {
 
   return (
     <section className="ui-ux-service">
-      <div className="ui-ux-header">
+      <div className="ui-ux-header" data-aos="flip-right">
         <h1>Custom UI/UX Services</h1>
         <p>100% Unique, Professional Website Design for Your Business</p>
       </div>
       <div className="ui-ux-service-cards">
         {services.map((service, index) => (
-          <div key={index} className="ui-ux-service-card">
+          <div key={index} className="ui-ux-service-card" data-aos="fade-up">
             <div className="ui-ux-card-icon"><img src={service.img} alt={service.title} /></div>
             <h3>{service.title}</h3>
             <p>{service.description}</p>

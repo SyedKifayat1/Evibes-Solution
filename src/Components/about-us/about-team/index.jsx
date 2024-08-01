@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import './about-team.css'
 import Member1 from '../../assets/About-Us-Member-1.webp'
 import Member2 from '../../assets/About-Us-Member-2.webp'
@@ -8,10 +8,10 @@ const AboutTeam = () => {
   return (
     <section className='about-team'>
         <div>
-            <h4>WHO WE ARE</h4>
-            <h1>Our Amazing Team</h1>
+            <h4 data-aos="flip-right">WHO WE ARE</h4>
+            <h1 data-aos="flip-right">Our Amazing Team</h1>
         </div>
-        <div className='about-team-cards'>
+        <div className='about-team-cards' data-aos="fade-up">
             <div className='about-team-card'>
                 <div className="about-team-card-img">
                     <img src={Member1} alt="" />

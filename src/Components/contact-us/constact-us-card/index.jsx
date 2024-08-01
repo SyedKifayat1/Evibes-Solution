@@ -4,7 +4,7 @@ import './contact-us-card.css';
 const ContactUsCard = () => {
     return (
         <section className='contact-us-card'>
-            <div className='contact-info'>
+            <div className='contact-info' data-aos="fade-right">
                 <div>
                     <h2>Contact Information</h2>
                     <p>We’ll create high-quality linkable content and build at least 40 high-authority.</p>
@@ -38,7 +38,7 @@ const ContactUsCard = () => {
                     </ul>
                 </div>
             </div>
-            <div className='contact-form'>
+            <div className='contact-form' data-aos="fade-up">
                 <form>
                     <div>
                         <label htmlFor="name">Name</label>

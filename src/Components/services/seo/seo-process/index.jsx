@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './seo-process.css'; // Import your CSS for styling
 
 const SEOProcess = () => {

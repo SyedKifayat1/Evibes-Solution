@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './seo-need-card.css'
 import KeywordImg from '../../../assets/keyword.png'
 import OnPageImg from '../../../assets/website-optimization2.png'

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './about-experience.css';
 
 const AboutExperience = () => {
@@ -11,7 +11,7 @@ const AboutExperience = () => {
     return (
         <section className='about-experience'>
             <div className='about-experience-wrapper'>
-                <div className='about-experience-content'>
+                <div className='about-experience-content' data-aos="fade-right">
                     <h4>INDUSTRY EXPERIENCES</h4>
                     <h1>Digital solutions for your online business.</h1>
                     <p>Evibes Development is dedicated to delivering comprehensive digital solutions that support your business’s growth.</p>
@@ -22,6 +22,7 @@ const AboutExperience = () => {
                             key={index}
                             className={`about-experience-drop-down ${activeIndex === index ? 'active' : ''}`}
                             onClick={() => handleToggle(index)}
+                            data-aos="fade-up"
                         >
                             <div className='drop-down-heading'>
                                 <h3 className="drop-down-title">

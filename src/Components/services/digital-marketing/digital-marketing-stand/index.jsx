@@ -1,4 +1,3 @@
-import React from 'react';
 import './digital-marketing-stand.css';
 import SocialImg from '../../../assets/2150063134.jpg';
 import GoogleImg from '../../../assets/4c95a69ec3ca35289d99b3770500c2ff.jpg';
@@ -8,11 +7,11 @@ const DigitalMarketingStand = () => {
     return (
         <section className="digital-marketing-stand">
             <div className="digital-marketing-stand-header">
-                <h4>Stand Out</h4>
-                <h1>Experience the Digital Advantage with Evibes Services</h1>
+                <h4 data-aos="flip-right" >Stand Out</h4>
+                <h1 data-aos="flip-right" >Experience the Digital Advantage with Evibes Services</h1>
             </div>
             <div className='digital-marketing-stand-cards'>
-                <div className="digital-marketing-stand-card">
+                <div className="digital-marketing-stand-card" data-aos="fade-up" >
                     <div className="image-container">
                         <img src={SocialImg} alt="Social Media Marketing" />
                     </div>
@@ -22,7 +21,7 @@ const DigitalMarketingStand = () => {
                         <button><a href="#social-media">Learn More</a></button>
                     </div>
                 </div>
-                <div className="digital-marketing-stand-card">
+                <div className="digital-marketing-stand-card" data-aos="fade-up" >
                     <div className="image-container">
                         <img src={GoogleImg} alt="Google Ads / PPC" />
                     </div>
@@ -32,7 +31,7 @@ const DigitalMarketingStand = () => {
                         <button><a href="#google-ads">Learn More</a></button>
                     </div>
                 </div>
-                <div className="digital-marketing-stand-card">
+                <div className="digital-marketing-stand-card" data-aos="fade-up">
                     <div className="image-container">
                         <img src={BrandImg} alt="Branding & Growth" />
                     </div>

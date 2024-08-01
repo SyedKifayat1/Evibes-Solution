@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import './seo-boost.css';
 import SEOBoostImg from '../../../assets/1231.jpg';
 

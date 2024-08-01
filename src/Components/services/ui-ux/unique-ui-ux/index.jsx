@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './unique-ui-ux.css';
 import UniqueUiUxImg1 from '../../../assets/31262585_7799000.jpg';
 import UniqueUiUxImg2 from '../../../assets/7335301_3606208-scaled.jpg';
@@ -48,12 +48,12 @@ const UniqueUiUx = () => {
   return (
     <section className="unique-ui-ux">
       <div className="unique-ui-ux-content">
-        <h4>Your Unique UI/UX Design Partner</h4>
-        <h1>Why Choose Evibes Development for Your UI/UX Design Needs?</h1>
-        <p>If you want to stand out in the highly competitive digital landscape, exceptional UI/UX design is a must. That’s where Evibes Development comes in. With our experienced team of designers, we create engaging and intuitive design solutions tailored to your unique business needs. We keep your users in mind every step of the way, ensuring a seamless user experience that keeps them coming back for more.</p>
-        <button className="unique-ui-ux-button">See Our Work</button>
+        <h4 data-aos="fade-right">Your Unique UI/UX Design Partner</h4>
+        <h1 data-aos="fade-right">Why Choose Evibes Development for Your UI/UX Design Needs?</h1>
+        <p data-aos="fade-up">If you want to stand out in the highly competitive digital landscape, exceptional UI/UX design is a must. That’s where Evibes Development comes in. With our experienced team of designers, we create engaging and intuitive design solutions tailored to your unique business needs. We keep your users in mind every step of the way, ensuring a seamless user experience that keeps them coming back for more.</p>
+        <button className="unique-ui-ux-button" data-aos="fade-up">See Our Work</button>
       </div>
-      <div className="unique-ui-ux-image-container">
+      <div className="unique-ui-ux-image-container" data-aos="fade-up">
         <img
           src={images[currentIndex]}
           alt="UI/UX Design"

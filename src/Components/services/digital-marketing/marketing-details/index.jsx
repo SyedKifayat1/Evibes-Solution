@@ -1,4 +1,3 @@
-import React from 'react';
 import './marketing-details.css';
 
 const MarketingDetails = () => {
@@ -33,12 +32,12 @@ const MarketingDetails = () => {
         <>
             {data.map((detail) => (
                 <section className="marketing-details" id={detail.id} key={detail.id}>
-                    <div className="content">
+                    <div className="content" data-aos="fade-right">
                         <h1>{detail.h1}</h1>
                         <p>{detail.p}</p>
                         <button>Get Started</button>
                     </div>
-                    <div className="details">
+                    <div className="details" data-aos="fade-up">
                         <ul>
                             <li>{detail.li1}</li>
                             <li>{detail.li2}</li>

@@ -2,7 +2,7 @@ import React from 'react'
 import './contact-us-details.css'
 const ContactUsDetails = () => {
   return (
-    <section className='contact-us-details'>
+    <section className='contact-us-details' data-aos="fade-up">
         <div className='contact-details-card'>
             <div className="contact-details-icon"><i class="fa-solid fa-2x fa-headset"></i></div>
             <h3>Help & Support</h3>

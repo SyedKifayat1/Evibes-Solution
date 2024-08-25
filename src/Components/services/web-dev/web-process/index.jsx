@@ -27,39 +27,40 @@ const WebProcess = () => {
         { title: 'Website Production', content: 'Our team migrates all of your existing web content and metadata to your new site making sure to preserve copy, images, and any other curated details.' },
         { title: 'Site Launch', content: 'After the development of a site transition plan and a thorough vetting for bugs and improvements, it’s time to break out the champagne and reveal your new and improved look.' },
     ];
-  return (
-    <div className='web-process'>
-    <h1 data-aos="fade-right">Our Development Process</h1>
-    <div className="accordion">
-        <div className="accordion-titles">
-            {items.map((item, index) => (
-                <>
-                <div
-                    key={index}
-                    className={`accordion-title ${openIndex === index ? 'open' : ''}`}
-                    onClick={() => toggleAccordion(index)}
+    return (
+        <div className='web-process'>
+            <h1 data-aos="fade-right">Our Development Process</h1>
+            <div className="accordion">
+                <div className="accordion-titles"
                     data-aos="fade-right"
                 >
-                    {item.title}
+                    {items.map((item, index) => (
+                        <>
+                            <div
+                                key={index}
+                                className={`accordion-title ${openIndex === index ? 'open' : ''}`}
+                                onClick={() => toggleAccordion(index)}
+                            >
+                                {item.title}
+                            </div>
+                            {isSmallScreen && openIndex === index && (
+                                <div className="accordion-content" data-aos="fade-up">
+                                    <h3>{items[openIndex].title}</h3>
+                                    <p>{item.content}</p>
+                                </div>
+                            )}
+                        </>
+                    ))}
                 </div>
-                {isSmallScreen && openIndex === index && (
+                {!isSmallScreen && openIndex !== null && (
                     <div className="accordion-content" data-aos="fade-up">
                         <h3>{items[openIndex].title}</h3>
-                        <p>{item.content}</p>
+                        <p>{items[openIndex].content}</p>
                     </div>
-                 )}
-                </>
-            ))}
-        </div>
-        {!isSmallScreen && openIndex !== null && (
-            <div className="accordion-content" data-aos="fade-up">
-                <h3>{items[openIndex].title}</h3>
-                <p>{items[openIndex].content}</p>
+                )}
             </div>
-        )}
-    </div>
-</div>
-  )
+        </div>
+    )
 }
 
 export default WebProcess

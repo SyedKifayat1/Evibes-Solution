@@ -27,39 +27,40 @@ const UiUxProcess = () => {
         { title: 'User Testing & Iteration', content: 'We conduct rigorous user testing to gather feedback and iterate on the designs until they exceed expectations.' },
         { title: 'Development & Implementation', content: 'We collaborate closely with our development team to ensure seamless integration and flawless execution of the final design.' },
     ];
-  return (
-    <div className='ui-uxprocess'>
-    <h1 data-aos="flip-right">Our Design Process</h1>
-    <div className="accordion">
-        <div className="accordion-titles">
-            {items.map((item, index) => (
-                <>
-                <div
-                    key={index}
-                    className={`accordion-title ${openIndex === index ? 'open' : ''}`}
-                    onClick={() => toggleAccordion(index)}
-                    data-aos="fade-right"
-                >
-                    {item.title}
+    return (
+        <div className='ui-uxprocess'>
+            <h1 data-aos="flip-right">Our Design Process</h1>
+            <div className="accordion">
+                <div className="accordion-titles"
+                    data-aos="fade-right">
+                    {items.map((item, index) => (
+                        <>
+                            <div
+                                key={index}
+                                className={`accordion-title ${openIndex === index ? 'open' : ''}`}
+                                onClick={() => toggleAccordion(index)}
+
+                            >
+                                {item.title}
+                            </div>
+                            {isSmallScreen && openIndex === index && (
+                                <div className="accordion-content" data-aos="fade-up">
+                                    <h3>{items[openIndex].title}</h3>
+                                    <p>{item.content}</p>
+                                </div>
+                            )}
+                        </>
+                    ))}
                 </div>
-                {isSmallScreen && openIndex === index && (
+                {!isSmallScreen && openIndex !== null && (
                     <div className="accordion-content" data-aos="fade-up">
                         <h3>{items[openIndex].title}</h3>
-                        <p>{item.content}</p>
+                        <p>{items[openIndex].content}</p>
                     </div>
-                 )}
-                </>
-            ))}
-        </div>
-        {!isSmallScreen && openIndex !== null && (
-            <div className="accordion-content" data-aos="fade-up">
-                <h3>{items[openIndex].title}</h3>
-                <p>{items[openIndex].content}</p>
+                )}
             </div>
-        )}
-    </div>
-</div>
-  )
+        </div>
+    )
 }
 
 export default UiUxProcess

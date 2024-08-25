@@ -16,13 +16,13 @@ const AboutExperience = () => {
                     <h1>Digital solutions for your online business.</h1>
                     <p>Evibes Development is dedicated to delivering comprehensive digital solutions that support your business’s growth.</p>
                 </div>
-                <div className='about-experience-drop-downs'>
+                <div className='about-experience-drop-downs' data-aos="fade-up">
                     {dropDownData.map((item, index) => (
                         <div
                             key={index}
                             className={`about-experience-drop-down ${activeIndex === index ? 'active' : ''}`}
                             onClick={() => handleToggle(index)}
-                            data-aos="fade-up"
+                            
                         >
                             <div className='drop-down-heading'>
                                 <h3 className="drop-down-title">

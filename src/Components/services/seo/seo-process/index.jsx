@@ -33,14 +33,14 @@ const SEOProcess = () => {
         <div className='seo-process'>
             <h1 data-aos="fade-right" >Our SEO Process</h1>
             <div className="accordion">
-                <div className="accordion-titles">
+                <div className="accordion-titles" data-aos="fade-right" >
                     {items.map((item, index) => (
                         <>
                         <div
                             key={index}
                             className={`accordion-title ${openIndex === index ? 'open' : ''}`}
                             onClick={() => toggleAccordion(index)}
-                            data-aos="fade-right" 
+                            
                         >
                             {item.title}
                         </div>

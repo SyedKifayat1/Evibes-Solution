@@ -109,7 +109,7 @@ const Navbar = () => {
               {/* <Link className="nav-link close-drop-down" to="/blogs">Blog</Link> */}
             </li>
           </ul>
-          <button className="btn" type="submit">Get a Quote</button>
+          <button className="btn" type="submit"><Link className='link-btn' to="/contact-us">Get Started</Link></button>
         </div>
       </div>
     </nav>

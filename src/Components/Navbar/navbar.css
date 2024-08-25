@@ -75,10 +75,15 @@
   /* background-color: #002159; */
     background-image: none;
     border:1px solid #FF87FA;
-    color: #FF87FA;
   /* color: #fff; */
 }
-
+.link-btn{
+  text-decoration: none;
+  color: #fff;
+}
+.btn:hover .link-btn{
+  color: #FF87FA;
+}
 
 
 
